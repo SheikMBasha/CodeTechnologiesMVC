@@ -9,12 +9,14 @@
 
 namespace CodeTechnologiesMVC
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
-    using System.Data.Objects;
-    using System.Data.Objects.DataClasses;
-    using System.Linq;
+    using CodeTechnologiesMVC.Models;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Data.Objects;
+using System.Data.Objects.DataClasses;
+using System.Linq;
     
     public partial class sadiqEntities1 : DbContext
     {
@@ -38,9 +40,14 @@ namespace CodeTechnologiesMVC
         public DbSet<prometric> prometrics { get; set; }
         public DbSet<voucher> vouchers { get; set; }
     
-        public virtual int GetMailDetails()
+        public virtual List<MailViewModel> GetMailViewModelDetails()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetMailDetails");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteStoreQuery<MailViewModel>("call GetMailViewModelDetails();").ToList();
+        }
+    
+        public virtual List<MailViewModel> testProcedure()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteStoreQuery<MailViewModel>("call testProcedure();").ToList();
         }
     }
 }

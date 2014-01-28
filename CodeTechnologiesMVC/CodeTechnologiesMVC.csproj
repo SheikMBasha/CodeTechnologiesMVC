@@ -228,6 +228,7 @@
     <Compile Include="confighiredprometric.cs">
       <DependentUpon>CodeTechModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AcademyController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstituteController.cs" />
@@ -412,6 +413,11 @@
     <Content Include="Views\Institute\Details.cshtml" />
     <Content Include="Views\Institute\Edit.cshtml" />
     <Content Include="Views\Institute\Delete.cshtml" />
+    <Content Include="Views\Academy\Index.cshtml" />
+    <Content Include="Views\Academy\Create.cshtml" />
+    <Content Include="Views\Academy\Details.cshtml" />
+    <Content Include="Views\Academy\Edit.cshtml" />
+    <Content Include="Views\Academy\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

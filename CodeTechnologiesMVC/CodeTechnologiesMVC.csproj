@@ -230,6 +230,7 @@
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InstituteController.cs" />
     <Compile Include="Controllers\MailController.cs" />
     <Compile Include="exam.cs">
       <DependentUpon>CodeTechModel.tt</DependentUpon>
@@ -406,6 +407,11 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Mail\Index.cshtml" />
+    <Content Include="Views\Institute\Index.cshtml" />
+    <Content Include="Views\Institute\Create.cshtml" />
+    <Content Include="Views\Institute\Details.cshtml" />
+    <Content Include="Views\Institute\Edit.cshtml" />
+    <Content Include="Views\Institute\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

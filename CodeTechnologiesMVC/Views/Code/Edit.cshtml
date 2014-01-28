@@ -1,0 +1,54 @@
+﻿@model CodeTechnologiesMVC.code
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>code</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ClientId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ClientId)
+            @Html.ValidationMessageFor(model => model.ClientId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ExamType)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ExamType)
+            @Html.ValidationMessageFor(model => model.ExamType)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ExamCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ExamCode)
+            @Html.ValidationMessageFor(model => model.ExamCode)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

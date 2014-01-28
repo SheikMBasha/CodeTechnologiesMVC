@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="56a8db1474ea49458d70305e20bd2e13" Name="Diagram1">
+        <EntityTypeShape EntityType="sadiqModel.academy" Width="1.5" PointX="3.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="sadiqModel.account" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sadiqModel.candidate" Width="1.5" PointX="6" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sadiqModel.client" Width="1.5" PointX="1.5" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sadiqModel.code" Width="1.5" PointX="3.75" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sadiqModel.confighiredprometric" Width="1.5" PointX="8" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sadiqModel.examnature" Width="1.5" PointX="1.5" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="sadiqModel.exam" Width="1.5" PointX="3.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sadiqModel.examstraining" Width="1.5" PointX="6" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="sadiqModel.expens" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sadiqModel.institute" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="sadiqModel.mail" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="sadiqModel.pricing" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sadiqModel.prometric" Width="1.5" PointX="5.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sadiqModel.prometricpromotion" Width="1.5" PointX="8" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="sadiqModel.trainingaccount" Width="1.5" PointX="8.25" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="sadiqModel.vendor" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sadiqModel.voucher" Width="1.5" PointX="3.75" PointY="22.875" IsExpanded="true" />
+        <AssociationConnector Association="sadiqModel.FK_Candidate_Academy" ManuallyRouted="false" />
+        <AssociationConnector Association="sadiqModel.FK_Accounts_Institute" ManuallyRouted="false" />
+        <AssociationConnector Association="sadiqModel.FK_Candidate_Exams" ManuallyRouted="false" />
+        <AssociationConnector Association="sadiqModel.FK_Candidate_Institute" ManuallyRouted="false" />
+        <AssociationConnector Association="sadiqModel.FK_Candidate_Voucher" ManuallyRouted="false" />
+        <AssociationConnector Association="sadiqModel.FK_Client_Exams" ManuallyRouted="false" />
+        <AssociationConnector Association="sadiqModel.FK_Codes_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="sadiqModel.FK_Pricing_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="sadiqModel.FK_Voucher_client" ManuallyRouted="false" />
+        <AssociationConnector Association="sadiqModel.FK_Prometric_ConfigPrometric" ManuallyRouted="false" />
+        <AssociationConnector Association="sadiqModel.FK_Voucher_ExamNature" ManuallyRouted="false" />
+        <AssociationConnector Association="sadiqModel.FK_ExamsTraining_Exams" ManuallyRouted="false" />
+        <AssociationConnector Association="sadiqModel.FK_TrainingAccount_Accounts" ManuallyRouted="false" />
+        <AssociationConnector Association="sadiqModel.FK_Mail_Institute" ManuallyRouted="false" />
+        <AssociationConnector Association="sadiqModel.FK_Pricing_Institute" ManuallyRouted="false" />
+        <AssociationConnector Association="sadiqModel.FK_prometricpromotions_prometric" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

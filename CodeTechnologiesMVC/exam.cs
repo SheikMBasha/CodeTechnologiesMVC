@@ -17,13 +17,16 @@ namespace CodeTechnologiesMVC
         public exam()
         {
             this.candidates = new HashSet<candidate>();
+            this.examstrainings = new HashSet<examstraining>();
         }
     
         public string Id { get; set; }
         public string Name { get; set; }
         public string ClientId { get; set; }
+        public string Title { get; set; }
     
         public virtual ICollection<candidate> candidates { get; set; }
         public virtual client client { get; set; }
+        public virtual ICollection<examstraining> examstrainings { get; set; }
     }
 }

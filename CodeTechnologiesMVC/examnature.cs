@@ -12,19 +12,16 @@ namespace CodeTechnologiesMVC
     using System;
     using System.Collections.Generic;
     
-    public partial class mail
+    public partial class examnature
     {
-        public int Id { get; set; }
-        public System.DateTime ReceivedDate { get; set; }
-        public string CandidateName { get; set; }
-        public string ExamNo { get; set; }
-        public Nullable<int> Discount { get; set; }
-        public Nullable<bool> Abroad { get; set; }
-        public Nullable<System.DateTime> ScheduledDate { get; set; }
-        public Nullable<int> InstituteId { get; set; }
-        public string VoucherNo { get; set; }
-        public Nullable<int> CommittedPrice { get; set; }
+        public examnature()
+        {
+            this.vouchers = new HashSet<voucher>();
+        }
     
-        public virtual institute institute { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+    
+        public virtual ICollection<voucher> vouchers { get; set; }
     }
 }

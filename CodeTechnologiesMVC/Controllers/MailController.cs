@@ -14,12 +14,11 @@ namespace CodeTechnologiesMVC.Controllers
 
         public ActionResult Index()
         {
-            using (var db = new sadiqEntities1())
+            using (var db = new sadiqEntities2())
             {
-                List<MailViewModel> mailviewmodel = db.testProcedure();
-                return View(mailviewmodel);
+                List<MailViewModel> mailviewmodels = db.GetMailDetails();
+                return View(mailviewmodels);
             }
-            
         }
 
     }

@@ -17,6 +17,7 @@ namespace CodeTechnologiesMVC
         public prometric()
         {
             this.confighiredprometrics = new HashSet<confighiredprometric>();
+            this.prometricpromotions = new HashSet<prometricpromotion>();
         }
     
         public int SiteId { get; set; }
@@ -28,5 +29,6 @@ namespace CodeTechnologiesMVC
         public Nullable<bool> IsHired { get; set; }
     
         public virtual ICollection<confighiredprometric> confighiredprometrics { get; set; }
+        public virtual ICollection<prometricpromotion> prometricpromotions { get; set; }
     }
 }

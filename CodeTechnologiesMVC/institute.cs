@@ -16,18 +16,24 @@ namespace CodeTechnologiesMVC
     {
         public institute()
         {
+            this.accounts = new HashSet<account>();
             this.candidates = new HashSet<candidate>();
             this.mails = new HashSet<mail>();
+            this.pricings = new HashSet<pricing>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
         public string POCName { get; set; }
-        public int Phone { get; set; }
+        public long Phone { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
+        public Nullable<int> CreditAllowed { get; set; }
+        public Nullable<int> CreditRemaining { get; set; }
     
+        public virtual ICollection<account> accounts { get; set; }
         public virtual ICollection<candidate> candidates { get; set; }
         public virtual ICollection<mail> mails { get; set; }
+        public virtual ICollection<pricing> pricings { get; set; }
     }
 }

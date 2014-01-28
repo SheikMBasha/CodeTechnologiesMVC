@@ -22,12 +22,17 @@ namespace CodeTechnologiesMVC
         public string Id { get; set; }
         public string Vendor { get; set; }
         public string Type { get; set; }
-        public string Nature { get; set; }
+        public Nullable<int> Nature { get; set; }
         public string ClientId { get; set; }
         public Nullable<System.DateTime> ReceivedDate { get; set; }
         public Nullable<System.DateTime> Expiry { get; set; }
+        public Nullable<bool> IsComplimentaryVoucher { get; set; }
+        public Nullable<int> Price { get; set; }
+        public string VoucherNo { get; set; }
+        public string Batch { get; set; }
     
         public virtual ICollection<candidate> candidates { get; set; }
         public virtual client client { get; set; }
+        public virtual examnature examnature { get; set; }
     }
 }

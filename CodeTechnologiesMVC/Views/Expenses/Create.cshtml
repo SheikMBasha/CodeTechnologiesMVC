@@ -1,0 +1,52 @@
+﻿@model CodeTechnologiesMVC.expens
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>expens</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ExpenseType)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ExpenseType)
+            @Html.ValidationMessageFor(model => model.ExpenseType)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AmountPaid)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AmountPaid)
+            @Html.ValidationMessageFor(model => model.AmountPaid)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Date)
+            @Html.ValidationMessageFor(model => model.Date)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

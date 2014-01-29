@@ -69,6 +69,13 @@
             @Html.ValidationMessageFor(model => model.IsHired)
         </div>
 
+         <div class="editor-label">
+            @Html.LabelFor(model => model.PerExamProfit)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PerExamProfit)
+            @Html.ValidationMessageFor(model => model.PerExamProfit)
+        </div>
         <p>
             <input type="submit" value="Save" />
         </p>

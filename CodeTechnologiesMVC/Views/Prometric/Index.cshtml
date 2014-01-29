@@ -32,7 +32,11 @@
         <th>
             @Html.DisplayNameFor(model => model.IsHired)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.PerExamProfit)
+        </th>
+        <th> Actions </th>
+        <th> Promotions </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -59,9 +63,16 @@
             @Html.DisplayFor(modelItem => item.IsHired)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.DisplayFor(modelItem => item.PerExamProfit)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.SiteId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SiteId }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.SiteId  })
+        </td>
+
+        <td>
+            @Html.ActionLink("Show/Create", "IndexWithId", "Promotions", new { id = item.SiteId }, null);
         </td>
     </tr>
 }

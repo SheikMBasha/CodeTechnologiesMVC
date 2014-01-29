@@ -1,0 +1,70 @@
+﻿@model CodeTechnologiesMVC.prometricpromotion
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>prometricpromotion</legend>
+
+        @Html.HiddenFor(model => model.id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SiteId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SiteId)
+            @Html.ValidationMessageFor(model => model.SiteId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateFrom)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateFrom)
+            @Html.ValidationMessageFor(model => model.DateFrom)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateTo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateTo)
+            @Html.ValidationMessageFor(model => model.DateTo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MarginGain)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MarginGain)
+            @Html.ValidationMessageFor(model => model.MarginGain)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MarginMiss)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MarginMiss)
+            @Html.ValidationMessageFor(model => model.MarginMiss)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

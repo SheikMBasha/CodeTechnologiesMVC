@@ -1,0 +1,54 @@
+﻿@model CodeTechnologiesMVC.prometricpromotion
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>prometricpromotion</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SiteId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SiteId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateFrom)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateFrom)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateTo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateTo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MarginGain)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MarginGain)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MarginMiss)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MarginMiss)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

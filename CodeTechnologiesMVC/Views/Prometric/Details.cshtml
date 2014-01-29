@@ -1,0 +1,64 @@
+﻿@model CodeTechnologiesMVC.prometric
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>prometric</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SiteId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SiteId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.POCName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.POCName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.POCPhone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.POCPhone)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.POCEmail)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.POCEmail)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SiteAddress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SiteAddress)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IsHired)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsHired)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

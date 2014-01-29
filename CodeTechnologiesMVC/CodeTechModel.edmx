@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="sadiqModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="sadiqModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="sadiqModelStoreContainer">
           <EntitySet Name="academy" EntityType="sadiqModel.Store.academy" store:Type="Tables" Schema="sadiq" />
           <EntitySet Name="accounts" EntityType="sadiqModel.Store.accounts" store:Type="Tables" Schema="sadiq" />
@@ -272,6 +272,7 @@
           <Property Name="POCEmail" Type="varchar" Nullable="false" MaxLength="255" />
           <Property Name="SiteAddress" Type="varchar" Nullable="false" MaxLength="999" />
           <Property Name="IsHired" Type="bit" />
+          <Property Name="PerExamProfit" Type="varchar" MaxLength="45" />
         </EntityType>
         <EntityType Name="prometricpromotions">
           <Key>
@@ -512,8 +513,7 @@
         <Function Name="GetAllExamCodes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sadiq" />
         <Function Name="GetAllVendors" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sadiq" />
         <Function Name="GetMailDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sadiq" />
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="sadiqModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -793,6 +793,7 @@
           <Property Name="IsHired" Type="Boolean" />
           <NavigationProperty Name="confighiredprometrics" Relationship="sadiqModel.FK_Prometric_ConfigPrometric" FromRole="prometric" ToRole="confighiredprometric" />
           <NavigationProperty Name="prometricpromotions" Relationship="sadiqModel.FK_prometricpromotions_prometric" FromRole="prometric" ToRole="prometricpromotions" />
+          <Property Type="String" Name="PerExamProfit" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="prometricpromotion">
           <Key>
@@ -1205,6 +1206,7 @@
           <EntitySetMapping Name="prometrics">
             <EntityTypeMapping TypeName="sadiqModel.prometric">
               <MappingFragment StoreEntitySet="prometric">
+                <ScalarProperty Name="PerExamProfit" ColumnName="PerExamProfit" />
                 <ScalarProperty Name="SiteId" ColumnName="SiteId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="POCName" ColumnName="POCName" />

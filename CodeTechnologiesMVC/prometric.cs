@@ -27,6 +27,7 @@ namespace CodeTechnologiesMVC
         public string POCEmail { get; set; }
         public string SiteAddress { get; set; }
         public Nullable<bool> IsHired { get; set; }
+        public string PerExamProfit { get; set; }
     
         public virtual ICollection<confighiredprometric> confighiredprometrics { get; set; }
         public virtual ICollection<prometricpromotion> prometricpromotions { get; set; }

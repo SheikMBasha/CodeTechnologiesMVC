@@ -1,0 +1,68 @@
+﻿@model CodeTechnologiesMVC.prometric
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>prometric</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SiteId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SiteId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.POCName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.POCName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.POCPhone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.POCPhone)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.POCEmail)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.POCEmail)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SiteAddress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SiteAddress)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IsHired)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsHired)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

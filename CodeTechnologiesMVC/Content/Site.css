@@ -754,3 +754,45 @@ tr.pager td {
             margin: 0;
         }
 }
+
+
+
+/* Customized CSS*/
+
+table {
+    border: solid 2px black;
+}
+
+tr {
+    border: solid 1px black;
+    padding-left: 10px;
+}
+
+th {
+    border: solid 1px black;
+    padding-left: 10px;
+}
+
+td {
+    border: solid 1px black;
+    padding-left: 10px;
+}
+
+.editor-label {
+    float: left;
+    width: 200px;
+}
+
+.editor-field {
+    margin-left: 200px;
+    width: 250px;
+}
+
+.editor-field input {
+        width: 100%
+}
+
+#IsHired {
+    width: 20px;
+}
+    

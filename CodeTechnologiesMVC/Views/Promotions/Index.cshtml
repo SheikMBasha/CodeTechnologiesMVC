@@ -6,10 +6,7 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
+<table >
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.SiteId)
@@ -49,7 +46,7 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
             @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.ActionLink("Delete", "Delete", new { id=item.id, siteID = item.SiteId })
         </td>
     </tr>
 }

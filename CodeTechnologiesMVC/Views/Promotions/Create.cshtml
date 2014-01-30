@@ -17,7 +17,7 @@
             @Html.LabelFor(model => model.SiteId)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.SiteId)
+            @Html.TextBoxFor(model => model.SiteId, new { @readonly = "readonly", @Value = ViewBag.passedSiteID })
             @Html.ValidationMessageFor(model => model.SiteId)
         </div>
 
@@ -25,7 +25,7 @@
             @Html.LabelFor(model => model.DateFrom)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.DateFrom)
+            @Html.TextBoxFor(model => model.DateFrom, new { @class = "datefield", type = "date" })
             @Html.ValidationMessageFor(model => model.DateFrom)
         </div>
 
@@ -33,7 +33,7 @@
             @Html.LabelFor(model => model.DateTo)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.DateTo)
+            @Html.TextBoxFor(model => model.DateTo, new { @class= "datefield", type = "date" })
             @Html.ValidationMessageFor(model => model.DateTo)
         </div>
 
@@ -66,3 +66,4 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+

@@ -7,7 +7,11 @@
 <h2>IndexWithId</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @if (ViewBag.PromotionExists == 0)
+    { 
+        @Html.ActionLink("Create New", "Create", new { id = ViewBag.siteId }, null)
+    }
+    
 </p>
 <table>
     <tr>
@@ -49,9 +53,11 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
             @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.ActionLink("Delete", "Delete", new { id=item.id, siteId = item.SiteId})
         </td>
     </tr>
 }
 
 </table>
+
+<h4> @Html.ActionLink("Show all Promotions","Index")</h4>

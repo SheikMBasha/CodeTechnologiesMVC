@@ -65,7 +65,7 @@
             @Html.LabelFor(model => model.IsHired)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.IsHired)
+            @Html.CheckBox("IsHired")
             @Html.ValidationMessageFor(model => model.IsHired)
         </div>
 
@@ -73,7 +73,7 @@
             @Html.LabelFor(model => model.PerExamProfit)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.PerExamProfit)
+            @Html.TextBoxFor(model => model.PerExamProfit, new { @readonly = "readonly", @placeholder = "Enabled Only if Prometric is Hired!!" })
             @Html.ValidationMessageFor(model => model.PerExamProfit)
         </div>
 
@@ -90,3 +90,18 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+<script type="text/javascript">
+    $('#IsHired').click(function () {
+        if ($('#IsHired').is(':checked')) {
+            alert('Clicked!');
+            $('#PerExamProfit').removeAttr("disabled");
+        }
+        else {
+            $('#PerExamProfit').attr("disabled", "disabled");
+            $('#PerExamProfit').val("");
+            
+        }
+    });
+</script>

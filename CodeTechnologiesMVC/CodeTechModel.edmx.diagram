@@ -13,14 +13,14 @@
         <EntityTypeShape EntityType="sadiqModel.confighiredprometric" Width="1.5" PointX="8" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="sadiqModel.examnature" Width="1.5" PointX="1.5" PointY="23.875" IsExpanded="true" />
         <EntityTypeShape EntityType="sadiqModel.exam" Width="1.5" PointX="3.75" PointY="19.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="sadiqModel.examstraining" Width="1.5" PointX="6" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="sadiqModel.examstraining" Width="2" PointX="6" PointY="19.5" IsExpanded="true" />
         <EntityTypeShape EntityType="sadiqModel.expens" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sadiqModel.institute" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="sadiqModel.mail" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
         <EntityTypeShape EntityType="sadiqModel.pricing" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="sadiqModel.prometric" Width="1.5" PointX="5.75" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="sadiqModel.prometricpromotion" Width="1.5" PointX="8" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="sadiqModel.trainingaccount" Width="1.5" PointX="8.25" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="sadiqModel.trainingaccount" Width="2" PointX="8.25" PointY="19.875" IsExpanded="true" />
         <EntityTypeShape EntityType="sadiqModel.vendor" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sadiqModel.voucher" Width="1.5" PointX="3.75" PointY="22.875" IsExpanded="true" />
         <AssociationConnector Association="sadiqModel.FK_Candidate_Academy" ManuallyRouted="false" />

@@ -48,22 +48,22 @@ namespace CodeTechnologiesMVC
         public DbSet<trainingaccount> trainingaccounts { get; set; }
         public DbSet<vendor> vendors { get; set; }
         public DbSet<voucher> vouchers { get; set; }
-    
+
         public virtual List<client> GetAllClients()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteStoreQuery<client>("call GetAllClients();").ToList();
         }
-    
+
         public virtual List<string> GetAllExamCodes()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteStoreQuery<string>("call GetAllExamCodes();").ToList();
         }
-    
+
         public virtual List<vendor> GetAllVendors()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteStoreQuery<vendor>("call GetAllVendors();").ToList();
         }
-    
+
         public virtual List<MailViewModel> GetMailDetails()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteStoreQuery<MailViewModel>("call GetMailDetails();").ToList();

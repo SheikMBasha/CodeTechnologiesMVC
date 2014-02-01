@@ -1,0 +1,108 @@
+﻿@model CodeTechnologiesMVC.mail
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>mail</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ReceivedDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ReceivedDate)
+            @Html.ValidationMessageFor(model => model.ReceivedDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CandidateName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CandidateName)
+            @Html.ValidationMessageFor(model => model.CandidateName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ExamNo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ExamNo)
+            @Html.ValidationMessageFor(model => model.ExamNo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Discount)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Discount)
+            @Html.ValidationMessageFor(model => model.Discount)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Abroad)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Abroad)
+            @Html.ValidationMessageFor(model => model.Abroad)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ScheduledDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ScheduledDate)
+            @Html.ValidationMessageFor(model => model.ScheduledDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.InstituteId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.InstituteId)
+            @Html.ValidationMessageFor(model => model.InstituteId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VoucherNo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VoucherNo)
+            @Html.ValidationMessageFor(model => model.VoucherNo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CommittedPrice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CommittedPrice)
+            @Html.ValidationMessageFor(model => model.CommittedPrice)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Client)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Client)
+            @Html.ValidationMessageFor(model => model.Client)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

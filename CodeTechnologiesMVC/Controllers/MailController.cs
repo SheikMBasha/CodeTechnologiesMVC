@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace CodeTechnologiesMVC.Controllers
 {
@@ -12,12 +13,18 @@ namespace CodeTechnologiesMVC.Controllers
         //
         // GET: /Mail/
 
-        public ActionResult Index()
+        public ActionResult Index(string SearchString, int? page)
         {
             using (var db = new sadiqEntities2())
             {
-                List<MailViewModel> mailviewmodels = db.GetMailDetails();
-                return View(mailviewmodels);
+                IEnumerable<MailViewModel> mails = db.GetMailDetails();
+                if (!String.IsNullOrEmpty(SearchString))
+                {
+                    mails = mails.Where(m => m.CandidateName.ToUpper().Contains(SearchString.ToUpper()));
+                }
+                int pageSize = 5;
+                int pageNumber = (page ?? 1);
+                return View(mails.ToPagedList(pageNumber, pageSize));
             }
         }
 

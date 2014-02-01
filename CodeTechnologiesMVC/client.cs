@@ -20,6 +20,7 @@ namespace CodeTechnologiesMVC
             this.examcodes = new HashSet<examcode>();
             this.pricings = new HashSet<pricing>();
             this.vouchers = new HashSet<voucher>();
+            this.mails = new HashSet<mail>();
         }
     
         public string Id { get; set; }
@@ -30,5 +31,6 @@ namespace CodeTechnologiesMVC
         public virtual ICollection<examcode> examcodes { get; set; }
         public virtual ICollection<pricing> pricings { get; set; }
         public virtual ICollection<voucher> vouchers { get; set; }
+        public virtual ICollection<mail> mails { get; set; }
     }
 }

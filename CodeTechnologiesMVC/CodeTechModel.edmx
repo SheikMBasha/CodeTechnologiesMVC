@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="sadiqModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="sadiqModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="sadiqModelStoreContainer">
           <EntitySet Name="academy" EntityType="sadiqModel.Store.academy" store:Type="Tables" Schema="sadiq" />
           <EntitySet Name="accounts" EntityType="sadiqModel.Store.accounts" store:Type="Tables" Schema="sadiq" />
@@ -75,6 +75,10 @@
           <AssociationSet Name="FK_ExamsTraining_Exams" Association="sadiqModel.Store.FK_ExamsTraining_Exams">
             <End Role="exams" EntitySet="exams" />
             <End Role="examstraining" EntitySet="examstraining" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mail_Client" Association="sadiqModel.Store.FK_Mail_Client">
+            <End Role="client" EntitySet="client" />
+            <End Role="mail" EntitySet="mail" />
           </AssociationSet>
           <AssociationSet Name="FK_Mail_Institute" Association="sadiqModel.Store.FK_Mail_Institute">
             <End Role="institute" EntitySet="institute" />
@@ -261,6 +265,7 @@
           <Property Name="InstituteId" Type="int" />
           <Property Name="VoucherNo" Type="varchar" MaxLength="255" />
           <Property Name="CommittedPrice" Type="int" />
+          <Property Name="Client" Type="varchar" MaxLength="31" />
         </EntityType>
         <EntityType Name="pricing">
           <Key>
@@ -427,6 +432,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Mail_Client">
+          <End Role="client" Type="sadiqModel.Store.client" Multiplicity="0..1" />
+          <End Role="mail" Type="sadiqModel.Store.mail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="mail">
+              <PropertyRef Name="Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Mail_Institute">
           <End Role="institute" Type="sadiqModel.Store.institute" Multiplicity="0..1" />
           <End Role="mail" Type="sadiqModel.Store.mail" Multiplicity="*" />
@@ -527,8 +544,7 @@
         <Function Name="GetAllExamCodes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sadiq" />
         <Function Name="GetAllVendors" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sadiq" />
         <Function Name="GetMailDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sadiq" />
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="sadiqModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -619,6 +635,10 @@
           <FunctionImport Name="GetAllExamCodes" />
           <FunctionImport Name="GetAllVendors" />
           <FunctionImport Name="GetMailDetails" />
+          <AssociationSet Name="FK_Mail_Client" Association="sadiqModel.FK_Mail_Client">
+            <End Role="client" EntitySet="clients" />
+            <End Role="mail" EntitySet="mails" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="academy">
           <Key>
@@ -683,6 +703,7 @@
           <NavigationProperty Name="examcodes" Relationship="sadiqModel.FK_Codes_Client" FromRole="client" ToRole="examcodes" />
           <NavigationProperty Name="pricings" Relationship="sadiqModel.FK_Pricing_Client" FromRole="client" ToRole="pricing" />
           <NavigationProperty Name="vouchers" Relationship="sadiqModel.FK_Voucher_client" FromRole="client" ToRole="voucher" />
+          <NavigationProperty Name="mails" Relationship="sadiqModel.FK_Mail_Client" FromRole="client" ToRole="mail" />
         </EntityType>
         <EntityType Name="complimentaryvoucher">
           <Key>
@@ -792,6 +813,8 @@
           <Property Name="VoucherNo" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="CommittedPrice" Type="Int32" />
           <NavigationProperty Name="institute" Relationship="sadiqModel.FK_Mail_Institute" FromRole="mail" ToRole="institute" />
+          <Property Type="String" Name="Client" MaxLength="31" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="client1" Relationship="sadiqModel.FK_Mail_Client" FromRole="mail" ToRole="client" />
         </EntityType>
         <EntityType Name="pricing">
           <Key>
@@ -1063,6 +1086,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Mail_Client">
+          <End Type="sadiqModel.client" Role="client" Multiplicity="0..1" />
+          <End Type="sadiqModel.mail" Role="mail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="mail">
+              <PropertyRef Name="Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1218,6 +1253,7 @@
           <EntitySetMapping Name="mails">
             <EntityTypeMapping TypeName="sadiqModel.mail">
               <MappingFragment StoreEntitySet="mail">
+                <ScalarProperty Name="Client" ColumnName="Client" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ReceivedDate" ColumnName="ReceivedDate" />
                 <ScalarProperty Name="CandidateName" ColumnName="CandidateName" />

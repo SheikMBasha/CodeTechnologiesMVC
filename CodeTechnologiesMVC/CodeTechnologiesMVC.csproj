@@ -52,6 +52,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 6.7.4\Assemblies\v4.0\MySql.Web.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -265,6 +271,8 @@
       <DependentUpon>CodeTechModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\mail.cs" />
+    <Compile Include="Models\MailAttribs.cs" />
     <Compile Include="Models\MailViewModel.cs" />
     <Compile Include="pricing.cs">
       <DependentUpon>CodeTechModel.tt</DependentUpon>
@@ -287,6 +295,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -416,7 +425,6 @@
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\Mail\Index.cshtml" />
     <Content Include="Views\Institute\Index.cshtml" />
     <Content Include="Views\Institute\Create.cshtml" />
     <Content Include="Views\Institute\Details.cshtml" />
@@ -459,6 +467,7 @@
     <Content Include="Views\Promotions\Edit.cshtml" />
     <Content Include="Views\Promotions\Delete.cshtml" />
     <Content Include="Views\Promotions\CustomerPrometricError.cshtml" />
+    <Content Include="Views\Mail\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

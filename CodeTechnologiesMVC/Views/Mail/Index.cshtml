@@ -1,4 +1,6 @@
-﻿@model IEnumerable<CodeTechnologiesMVC.Models.MailViewModel>
+﻿@model PagedList.IPagedList<CodeTechnologiesMVC.Models.MailViewModel>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
 
 @{
     ViewBag.Title = "Index";
@@ -9,31 +11,41 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@using (Html.BeginForm())
+{
+    <p>
+        Find By Name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ReceivedDate)
+            ReceivedDate
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CandidateName)
+            CandidateName
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ExamNo)
+            ExamNo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Discount)
+            Discount
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Abroad)
+            Abroad
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ScheduledDate)
+            ScheduledDate
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.VoucherNo)
+            VoucherNo
+        </th>
+        <th>
+            Client
         </th>
         <th></th>
     </tr>
@@ -65,6 +77,9 @@
             @Html.DisplayFor(modelItem => item.VoucherNo)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Client)
+        </td>
+        <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
@@ -73,3 +88,6 @@
 }
 
 </table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0: Model.PageNumber ) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

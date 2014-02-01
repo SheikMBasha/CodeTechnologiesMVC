@@ -14,7 +14,14 @@ namespace CodeTechnologiesMVC
     
     public partial class vendor
     {
+        public vendor()
+        {
+            this.purchasingpricings = new HashSet<purchasingpricing>();
+        }
+    
         public string Id { get; set; }
         public string Name { get; set; }
+    
+        public virtual ICollection<purchasingpricing> purchasingpricings { get; set; }
     }
 }

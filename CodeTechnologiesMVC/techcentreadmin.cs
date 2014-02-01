@@ -12,20 +12,22 @@ namespace CodeTechnologiesMVC
     using System;
     using System.Collections.Generic;
     
-    public partial class academy
+    public partial class techcentreadmin
     {
-        public academy()
+        public techcentreadmin()
         {
-            this.pearsoncandidates = new HashSet<pearsoncandidate>();
+            this.prometrics = new HashSet<prometric>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public string POCName { get; set; }
-        public int Phone { get; set; }
-        public string Email { get; set; }
-        public string Address { get; set; }
+        public string SecurityQuestion1 { get; set; }
+        public string AnswerQuestion1 { get; set; }
+        public string SecurityQuestion2 { get; set; }
+        public string AnswerQuestion2 { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
     
-        public virtual ICollection<pearsoncandidate> pearsoncandidates { get; set; }
+        public virtual ICollection<prometric> prometrics { get; set; }
     }
 }

@@ -19,9 +19,10 @@ namespace CodeTechnologiesMVC
         public string ClientId { get; set; }
         public string VoucherType { get; set; }
         public string VoucherNature { get; set; }
-        public string Price { get; set; }
-        public Nullable<bool> IsWithoutVoucher { get; set; }
+        public Nullable<long> PriceWithVoucher { get; set; }
+        public Nullable<long> PriceWithoutVoucher { get; set; }
         public Nullable<System.DateTime> PriceDate { get; set; }
+        public Nullable<long> PriceWithTraining { get; set; }
     
         public virtual client client { get; set; }
         public virtual institute institute { get; set; }

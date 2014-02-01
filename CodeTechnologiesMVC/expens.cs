@@ -18,5 +18,9 @@ namespace CodeTechnologiesMVC
         public string ExpenseType { get; set; }
         public Nullable<int> AmountPaid { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
+        public string PaymentChannel { get; set; }
+        public Nullable<int> SiteId { get; set; }
+    
+        public virtual prometric prometric { get; set; }
     }
 }

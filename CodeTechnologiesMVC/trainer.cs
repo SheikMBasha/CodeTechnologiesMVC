@@ -12,20 +12,17 @@ namespace CodeTechnologiesMVC
     using System;
     using System.Collections.Generic;
     
-    public partial class academy
+    public partial class trainer
     {
-        public academy()
+        public trainer()
         {
-            this.pearsoncandidates = new HashSet<pearsoncandidate>();
+            this.examstrainings = new HashSet<examstraining>();
         }
     
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string POCName { get; set; }
-        public int Phone { get; set; }
-        public string Email { get; set; }
-        public string Address { get; set; }
+        public int TrainerID { get; set; }
+        public string TrainerName { get; set; }
+        public Nullable<int> TrainerPhone { get; set; }
     
-        public virtual ICollection<pearsoncandidate> pearsoncandidates { get; set; }
+        public virtual ICollection<examstraining> examstrainings { get; set; }
     }
 }

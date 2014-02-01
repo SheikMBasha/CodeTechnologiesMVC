@@ -8,26 +8,6 @@
         <EntityContainer Name="sadiqModelStoreContainer">
           <EntitySet Name="academy" EntityType="sadiqModel.Store.academy" store:Type="Tables" Schema="sadiq" />
           <EntitySet Name="accounts" EntityType="sadiqModel.Store.accounts" store:Type="Tables" Schema="sadiq" />
-          <EntitySet Name="candidate" EntityType="sadiqModel.Store.candidate" store:Type="Tables" store:Schema="sadiq" store:Name="candidate">
-            <DefiningQuery>SELECT
-      `candidate`.`FirstName`, 
-      `candidate`.`LastName`, 
-      `candidate`.`ExamNature`, 
-      `candidate`.`ExamId`, 
-      `candidate`.`VoucherId`, 
-      `candidate`.`CandidateId`, 
-      `candidate`.`ExamStatus`, 
-      `candidate`.`Attempts`, 
-      `candidate`.`ExamDatel`, 
-      `candidate`.`EmailAddress`, 
-      `candidate`.`ExamEmailAddress`, 
-      `candidate`.`ExamEmailPassword`, 
-      `candidate`.`Address`, 
-      `candidate`.`Phone`, 
-      `candidate`.`InstituteId`, 
-      `candidate`.`AcademyId`
-      FROM `candidate` AS `candidate`</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="client" EntityType="sadiqModel.Store.client" store:Type="Tables" Schema="sadiq" />
           <EntitySet Name="complimentaryvoucher" EntityType="sadiqModel.Store.complimentaryvoucher" store:Type="Tables" Schema="sadiq" />
           <EntitySet Name="confighiredprometric" EntityType="sadiqModel.Store.confighiredprometric" store:Type="Tables" Schema="sadiq" />
@@ -35,12 +15,37 @@
           <EntitySet Name="examnature" EntityType="sadiqModel.Store.examnature" store:Type="Tables" Schema="sadiq" />
           <EntitySet Name="exams" EntityType="sadiqModel.Store.exams" store:Type="Tables" Schema="sadiq" />
           <EntitySet Name="examstraining" EntityType="sadiqModel.Store.examstraining" store:Type="Tables" Schema="sadiq" />
+          <EntitySet Name="examtype" EntityType="sadiqModel.Store.examtype" store:Type="Tables" Schema="sadiq" />
           <EntitySet Name="expenses" EntityType="sadiqModel.Store.expenses" store:Type="Tables" Schema="sadiq" />
           <EntitySet Name="institute" EntityType="sadiqModel.Store.institute" store:Type="Tables" Schema="sadiq" />
           <EntitySet Name="mail" EntityType="sadiqModel.Store.mail" store:Type="Tables" Schema="sadiq" />
+          <EntitySet Name="pearsoncandidate" EntityType="sadiqModel.Store.pearsoncandidate" store:Type="Tables" store:Schema="sadiq" store:Name="pearsoncandidate">
+            <DefiningQuery>SELECT
+      `pearsoncandidate`.`FirstName`, 
+      `pearsoncandidate`.`LastName`, 
+      `pearsoncandidate`.`ExamNature`, 
+      `pearsoncandidate`.`ExamId`, 
+      `pearsoncandidate`.`VoucherId`, 
+      `pearsoncandidate`.`CandidateId`, 
+      `pearsoncandidate`.`ExamStatus`, 
+      `pearsoncandidate`.`Attempts`, 
+      `pearsoncandidate`.`ExamDatel`, 
+      `pearsoncandidate`.`EmailAddress`, 
+      `pearsoncandidate`.`ExamEmailAddress`, 
+      `pearsoncandidate`.`ExamEmailPassword`, 
+      `pearsoncandidate`.`Address`, 
+      `pearsoncandidate`.`Phone`, 
+      `pearsoncandidate`.`InstituteId`, 
+      `pearsoncandidate`.`AcademyId`
+      FROM `pearsoncandidate` AS `pearsoncandidate`</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="pricing" EntityType="sadiqModel.Store.pricing" store:Type="Tables" Schema="sadiq" />
           <EntitySet Name="prometric" EntityType="sadiqModel.Store.prometric" store:Type="Tables" Schema="sadiq" />
+          <EntitySet Name="prometriccandidate" EntityType="sadiqModel.Store.prometriccandidate" store:Type="Tables" Schema="sadiq" />
           <EntitySet Name="prometricpromotions" EntityType="sadiqModel.Store.prometricpromotions" store:Type="Tables" Schema="sadiq" />
+          <EntitySet Name="purchasingpricing" EntityType="sadiqModel.Store.purchasingpricing" store:Type="Tables" Schema="sadiq" />
+          <EntitySet Name="techcentreadmin" EntityType="sadiqModel.Store.techcentreadmin" store:Type="Tables" Schema="sadiq" />
+          <EntitySet Name="trainer" EntityType="sadiqModel.Store.trainer" store:Type="Tables" Schema="sadiq" />
           <EntitySet Name="trainingaccounts" EntityType="sadiqModel.Store.trainingaccounts" store:Type="Tables" Schema="sadiq" />
           <EntitySet Name="vendors" EntityType="sadiqModel.Store.vendors" store:Type="Tables" Schema="sadiq" />
           <EntitySet Name="voucher" EntityType="sadiqModel.Store.voucher" store:Type="Tables" Schema="sadiq" />
@@ -50,19 +55,19 @@
           </AssociationSet>
           <AssociationSet Name="FK_Candidate_Academy" Association="sadiqModel.Store.FK_Candidate_Academy">
             <End Role="academy" EntitySet="academy" />
-            <End Role="candidate" EntitySet="candidate" />
+            <End Role="pearsoncandidate" EntitySet="pearsoncandidate" />
           </AssociationSet>
           <AssociationSet Name="FK_Candidate_Exams" Association="sadiqModel.Store.FK_Candidate_Exams">
             <End Role="exams" EntitySet="exams" />
-            <End Role="candidate" EntitySet="candidate" />
+            <End Role="pearsoncandidate" EntitySet="pearsoncandidate" />
           </AssociationSet>
           <AssociationSet Name="FK_Candidate_Institute" Association="sadiqModel.Store.FK_Candidate_Institute">
             <End Role="institute" EntitySet="institute" />
-            <End Role="candidate" EntitySet="candidate" />
+            <End Role="pearsoncandidate" EntitySet="pearsoncandidate" />
           </AssociationSet>
           <AssociationSet Name="FK_Candidate_Voucher" Association="sadiqModel.Store.FK_Candidate_Voucher">
             <End Role="voucher" EntitySet="voucher" />
-            <End Role="candidate" EntitySet="candidate" />
+            <End Role="pearsoncandidate" EntitySet="pearsoncandidate" />
           </AssociationSet>
           <AssociationSet Name="FK_Client_Exams" Association="sadiqModel.Store.FK_Client_Exams">
             <End Role="client" EntitySet="client" />
@@ -75,6 +80,14 @@
           <AssociationSet Name="FK_ExamsTraining_Exams" Association="sadiqModel.Store.FK_ExamsTraining_Exams">
             <End Role="exams" EntitySet="exams" />
             <End Role="examstraining" EntitySet="examstraining" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExamsTraining_Trainer" Association="sadiqModel.Store.FK_ExamsTraining_Trainer">
+            <End Role="trainer" EntitySet="trainer" />
+            <End Role="examstraining" EntitySet="examstraining" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Expenses_Prometric" Association="sadiqModel.Store.FK_Expenses_Prometric">
+            <End Role="prometric" EntitySet="prometric" />
+            <End Role="expenses" EntitySet="expenses" />
           </AssociationSet>
           <AssociationSet Name="FK_Mail_Client" Association="sadiqModel.Store.FK_Mail_Client">
             <End Role="client" EntitySet="client" />
@@ -96,20 +109,32 @@
             <End Role="prometric" EntitySet="prometric" />
             <End Role="confighiredprometric" EntitySet="confighiredprometric" />
           </AssociationSet>
+          <AssociationSet Name="FK_Prometric_TCAAdmin" Association="sadiqModel.Store.FK_Prometric_TCAAdmin">
+            <End Role="techcentreadmin" EntitySet="techcentreadmin" />
+            <End Role="prometric" EntitySet="prometric" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrometricCandidate_Voucher" Association="sadiqModel.Store.FK_PrometricCandidate_Voucher">
+            <End Role="voucher" EntitySet="voucher" />
+            <End Role="prometriccandidate" EntitySet="prometriccandidate" />
+          </AssociationSet>
           <AssociationSet Name="FK_prometricpromotions_prometric" Association="sadiqModel.Store.FK_prometricpromotions_prometric">
             <End Role="prometric" EntitySet="prometric" />
             <End Role="prometricpromotions" EntitySet="prometricpromotions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchasingPricing_Client" Association="sadiqModel.Store.FK_PurchasingPricing_Client">
+            <End Role="client" EntitySet="client" />
+            <End Role="purchasingpricing" EntitySet="purchasingpricing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchasingPricing_Vendor" Association="sadiqModel.Store.FK_PurchasingPricing_Vendor">
+            <End Role="vendors" EntitySet="vendors" />
+            <End Role="purchasingpricing" EntitySet="purchasingpricing" />
           </AssociationSet>
           <AssociationSet Name="FK_TrainingAccount_Accounts" Association="sadiqModel.Store.FK_TrainingAccount_Accounts">
             <End Role="examstraining" EntitySet="examstraining" />
             <End Role="trainingaccounts" EntitySet="trainingaccounts" />
           </AssociationSet>
-          <AssociationSet Name="FK_Voucher_client" Association="sadiqModel.Store.FK_Voucher_client">
-            <End Role="client" EntitySet="client" />
-            <End Role="voucher" EntitySet="voucher" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Voucher_ExamNature" Association="sadiqModel.Store.FK_Voucher_ExamNature">
-            <End Role="examnature" EntitySet="examnature" />
+          <AssociationSet Name="FK_Voucher_ComplimentaryVoucher" Association="sadiqModel.Store.FK_Voucher_ComplimentaryVoucher">
+            <End Role="complimentaryvoucher" EntitySet="complimentaryvoucher" />
             <End Role="voucher" EntitySet="voucher" />
           </AssociationSet>
         </EntityContainer>
@@ -136,31 +161,6 @@
           <Property Name="AmountCredited" Type="int" />
           <Property Name="VoucherId" Type="varchar" MaxLength="127" />
           <Property Name="CandidateId" Type="varchar" MaxLength="45" />
-        </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'def.sadiq.candidate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
-        <EntityType Name="candidate">
-          <Key>
-            <PropertyRef Name="FirstName" />
-            <PropertyRef Name="EmailAddress" />
-          </Key>
-          <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="256" />
-          <Property Name="LastName" Type="varchar" MaxLength="256" />
-          <Property Name="ExamNature" Type="varchar" MaxLength="45" />
-          <Property Name="ExamId" Type="varchar" MaxLength="45" />
-          <Property Name="VoucherId" Type="varchar" MaxLength="45" />
-          <Property Name="CandidateId" Type="varchar" MaxLength="45" />
-          <Property Name="ExamStatus" Type="varchar" MaxLength="45" />
-          <Property Name="Attempts" Type="smallint" />
-          <Property Name="ExamDatel" Type="datetime" />
-          <Property Name="EmailAddress" Type="varchar" Nullable="false" MaxLength="127" />
-          <Property Name="ExamEmailAddress" Type="varchar" MaxLength="127" />
-          <Property Name="ExamEmailPassword" Type="varchar" MaxLength="127" />
-          <Property Name="Address" Type="varchar" />
-          <Property Name="Phone" Type="int" />
-          <Property Name="InstituteId" Type="int" />
-          <Property Name="AcademyId" Type="int" />
         </EntityType>
         <EntityType Name="client">
           <Key>
@@ -212,7 +212,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="varchar" Nullable="false" MaxLength="7" />
-          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="127" />
+          <Property Name="ExamNo" Type="varchar" Nullable="false" MaxLength="127" />
           <Property Name="ClientId" Type="varchar" Nullable="false" MaxLength="31" />
           <Property Name="Title" Type="varchar" MaxLength="255" />
         </EntityType>
@@ -222,12 +222,18 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="ExamId" Type="varchar" MaxLength="7" />
-          <Property Name="TrainerName" Type="varchar" MaxLength="255" />
-          <Property Name="TrainerPhone" Type="int" />
           <Property Name="StartDate" Type="datetime" />
           <Property Name="EndDate" Type="datetime" />
           <Property Name="TrainingCost" Type="int" />
           <Property Name="TotalAmountReceived" Type="int" />
+          <Property Name="TrainerID" Type="int" />
+        </EntityType>
+        <EntityType Name="examtype">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ExamType" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="expenses">
           <Key>
@@ -237,6 +243,8 @@
           <Property Name="ExpenseType" Type="varchar" MaxLength="255" />
           <Property Name="AmountPaid" Type="int" />
           <Property Name="Date" Type="datetime" />
+          <Property Name="PaymentChannel" Type="varchar" MaxLength="255" />
+          <Property Name="SiteId" Type="int" />
         </EntityType>
         <EntityType Name="institute">
           <Key>
@@ -265,7 +273,33 @@
           <Property Name="InstituteId" Type="int" />
           <Property Name="VoucherNo" Type="varchar" MaxLength="255" />
           <Property Name="CommittedPrice" Type="int" />
-          <Property Name="Client" Type="varchar" MaxLength="31" />
+          <Property Name="StudentMailId" Type="varchar" MaxLength="255" />
+          <Property Name="client" Type="varchar" MaxLength="31" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.sadiq.pearsoncandidate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="pearsoncandidate">
+          <Key>
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="EmailAddress" />
+          </Key>
+          <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="256" />
+          <Property Name="LastName" Type="varchar" MaxLength="256" />
+          <Property Name="ExamNature" Type="varchar" MaxLength="45" />
+          <Property Name="ExamId" Type="varchar" MaxLength="45" />
+          <Property Name="VoucherId" Type="varchar" MaxLength="45" />
+          <Property Name="CandidateId" Type="varchar" MaxLength="45" />
+          <Property Name="ExamStatus" Type="varchar" MaxLength="45" />
+          <Property Name="Attempts" Type="smallint" />
+          <Property Name="ExamDatel" Type="datetime" />
+          <Property Name="EmailAddress" Type="varchar" Nullable="false" MaxLength="127" />
+          <Property Name="ExamEmailAddress" Type="varchar" MaxLength="127" />
+          <Property Name="ExamEmailPassword" Type="varchar" MaxLength="127" />
+          <Property Name="Address" Type="varchar" />
+          <Property Name="Phone" Type="int" />
+          <Property Name="InstituteId" Type="int" />
+          <Property Name="AcademyId" Type="int" />
         </EntityType>
         <EntityType Name="pricing">
           <Key>
@@ -276,9 +310,10 @@
           <Property Name="ClientId" Type="varchar" MaxLength="31" />
           <Property Name="VoucherType" Type="varchar" MaxLength="127" />
           <Property Name="VoucherNature" Type="varchar" MaxLength="127" />
-          <Property Name="Price" Type="varchar" MaxLength="45" />
-          <Property Name="IsWithoutVoucher" Type="bit" />
+          <Property Name="PriceWithVoucher" Type="bigint" />
+          <Property Name="PriceWithoutVoucher" Type="bigint" />
           <Property Name="PriceDate" Type="datetime" />
+          <Property Name="PriceWithTraining" Type="bigint" />
         </EntityType>
         <EntityType Name="prometric">
           <Key>
@@ -291,7 +326,18 @@
           <Property Name="POCEmail" Type="varchar" Nullable="false" MaxLength="255" />
           <Property Name="SiteAddress" Type="varchar" Nullable="false" MaxLength="999" />
           <Property Name="IsHired" Type="bit" />
-          <Property Name="PerExamProfit" Type="varchar" MaxLength="45" />
+          <Property Name="PerExamProfit" Type="varchar" MaxLength="10" />
+          <Property Name="TCAAdminId" Type="int" />
+          <Property Name="SiteOwnerName" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="prometriccandidate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CiscoClientId" Type="varchar" MaxLength="255" />
+          <Property Name="ConnectionId" Type="int" />
+          <Property Name="VoucherId" Type="varchar" MaxLength="45" />
         </EntityType>
         <EntityType Name="prometricpromotions">
           <Key>
@@ -303,6 +349,40 @@
           <Property Name="DateTo" Type="datetime" Nullable="false" />
           <Property Name="MarginGain" Type="int" />
           <Property Name="MarginMiss" Type="int" />
+        </EntityType>
+        <EntityType Name="purchasingpricing">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VendorId" Type="varchar" MaxLength="20" />
+          <Property Name="ClientId" Type="varchar" MaxLength="31" />
+          <Property Name="VoucherType" Type="varchar" MaxLength="45" />
+          <Property Name="VoucherNature" Type="varchar" MaxLength="45" />
+          <Property Name="Price" Type="int" />
+          <Property Name="PurchaseDate" Type="datetime" />
+          <Property Name="BatchNo" Type="int" />
+        </EntityType>
+        <EntityType Name="techcentreadmin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="SecurityQuestion1" Type="varchar" />
+          <Property Name="AnswerQuestion1" Type="varchar" />
+          <Property Name="SecurityQuestion2" Type="varchar" />
+          <Property Name="AnswerQuestion2" Type="varchar" />
+          <Property Name="UserName" Type="varchar" MaxLength="255" />
+          <Property Name="Password" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="trainer">
+          <Key>
+            <PropertyRef Name="TrainerID" />
+          </Key>
+          <Property Name="TrainerID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TrainerName" Type="varchar" MaxLength="255" />
+          <Property Name="TrainerPhone" Type="int" />
         </EntityType>
         <EntityType Name="trainingaccounts">
           <Key>
@@ -326,15 +406,8 @@
           </Key>
           <Property Name="Id" Type="varchar" Nullable="false" MaxLength="127" />
           <Property Name="Vendor" Type="varchar" MaxLength="127" />
-          <Property Name="Type" Type="varchar" MaxLength="127" />
-          <Property Name="Nature" Type="int" />
-          <Property Name="ClientId" Type="varchar" MaxLength="31" />
-          <Property Name="ReceivedDate" Type="datetime" />
-          <Property Name="Expiry" Type="datetime" />
-          <Property Name="IsComplimentaryVoucher" Type="bit" />
-          <Property Name="Price" Type="int" />
           <Property Name="VoucherNo" Type="varchar" MaxLength="255" />
-          <Property Name="Batch" Type="varchar" MaxLength="255" />
+          <Property Name="BatchId" Type="int" />
         </EntityType>
         <Association Name="FK_Accounts_Institute">
           <End Role="institute" Type="sadiqModel.Store.institute" Multiplicity="0..1" />
@@ -350,48 +423,48 @@
         </Association>
         <Association Name="FK_Candidate_Academy">
           <End Role="academy" Type="sadiqModel.Store.academy" Multiplicity="0..1" />
-          <End Role="candidate" Type="sadiqModel.Store.candidate" Multiplicity="*" />
+          <End Role="pearsoncandidate" Type="sadiqModel.Store.pearsoncandidate" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="academy">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="candidate">
+            <Dependent Role="pearsoncandidate">
               <PropertyRef Name="AcademyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Candidate_Exams">
           <End Role="exams" Type="sadiqModel.Store.exams" Multiplicity="0..1" />
-          <End Role="candidate" Type="sadiqModel.Store.candidate" Multiplicity="*" />
+          <End Role="pearsoncandidate" Type="sadiqModel.Store.pearsoncandidate" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="exams">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="candidate">
+            <Dependent Role="pearsoncandidate">
               <PropertyRef Name="ExamId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Candidate_Institute">
           <End Role="institute" Type="sadiqModel.Store.institute" Multiplicity="0..1" />
-          <End Role="candidate" Type="sadiqModel.Store.candidate" Multiplicity="*" />
+          <End Role="pearsoncandidate" Type="sadiqModel.Store.pearsoncandidate" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="institute">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="candidate">
+            <Dependent Role="pearsoncandidate">
               <PropertyRef Name="InstituteId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Candidate_Voucher">
           <End Role="voucher" Type="sadiqModel.Store.voucher" Multiplicity="0..1" />
-          <End Role="candidate" Type="sadiqModel.Store.candidate" Multiplicity="*" />
+          <End Role="pearsoncandidate" Type="sadiqModel.Store.pearsoncandidate" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="voucher">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="candidate">
+            <Dependent Role="pearsoncandidate">
               <PropertyRef Name="VoucherId" />
             </Dependent>
           </ReferentialConstraint>
@@ -432,6 +505,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ExamsTraining_Trainer">
+          <End Role="trainer" Type="sadiqModel.Store.trainer" Multiplicity="0..1" />
+          <End Role="examstraining" Type="sadiqModel.Store.examstraining" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="trainer">
+              <PropertyRef Name="TrainerID" />
+            </Principal>
+            <Dependent Role="examstraining">
+              <PropertyRef Name="TrainerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Expenses_Prometric">
+          <End Role="prometric" Type="sadiqModel.Store.prometric" Multiplicity="0..1" />
+          <End Role="expenses" Type="sadiqModel.Store.expenses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="prometric">
+              <PropertyRef Name="SiteId" />
+            </Principal>
+            <Dependent Role="expenses">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Mail_Client">
           <End Role="client" Type="sadiqModel.Store.client" Multiplicity="0..1" />
           <End Role="mail" Type="sadiqModel.Store.mail" Multiplicity="*" />
@@ -440,7 +537,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="mail">
-              <PropertyRef Name="Client" />
+              <PropertyRef Name="client" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -492,6 +589,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Prometric_TCAAdmin">
+          <End Role="techcentreadmin" Type="sadiqModel.Store.techcentreadmin" Multiplicity="0..1" />
+          <End Role="prometric" Type="sadiqModel.Store.prometric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="techcentreadmin">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="prometric">
+              <PropertyRef Name="TCAAdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrometricCandidate_Voucher">
+          <End Role="voucher" Type="sadiqModel.Store.voucher" Multiplicity="0..1" />
+          <End Role="prometriccandidate" Type="sadiqModel.Store.prometriccandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="voucher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="prometriccandidate">
+              <PropertyRef Name="VoucherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_prometricpromotions_prometric">
           <End Role="prometric" Type="sadiqModel.Store.prometric" Multiplicity="0..1" />
           <End Role="prometricpromotions" Type="sadiqModel.Store.prometricpromotions" Multiplicity="*" />
@@ -501,6 +622,30 @@
             </Principal>
             <Dependent Role="prometricpromotions">
               <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchasingPricing_Client">
+          <End Role="client" Type="sadiqModel.Store.client" Multiplicity="0..1" />
+          <End Role="purchasingpricing" Type="sadiqModel.Store.purchasingpricing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="purchasingpricing">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchasingPricing_Vendor">
+          <End Role="vendors" Type="sadiqModel.Store.vendors" Multiplicity="0..1" />
+          <End Role="purchasingpricing" Type="sadiqModel.Store.purchasingpricing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vendors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="purchasingpricing">
+              <PropertyRef Name="VendorId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -516,32 +661,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Voucher_client">
-          <End Role="client" Type="sadiqModel.Store.client" Multiplicity="0..1" />
+        <Association Name="FK_Voucher_ComplimentaryVoucher">
+          <End Role="complimentaryvoucher" Type="sadiqModel.Store.complimentaryvoucher" Multiplicity="0..1" />
           <End Role="voucher" Type="sadiqModel.Store.voucher" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="client">
-              <PropertyRef Name="Id" />
+            <Principal Role="complimentaryvoucher">
+              <PropertyRef Name="BatchId" />
             </Principal>
             <Dependent Role="voucher">
-              <PropertyRef Name="ClientId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Voucher_ExamNature">
-          <End Role="examnature" Type="sadiqModel.Store.examnature" Multiplicity="0..1" />
-          <End Role="voucher" Type="sadiqModel.Store.voucher" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="examnature">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="voucher">
-              <PropertyRef Name="Nature" />
+              <PropertyRef Name="BatchId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Function Name="GetAllClients" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sadiq" />
         <Function Name="GetAllExamCodes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sadiq" />
+        <Function Name="GetAllExamNature" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sadiq" />
+        <Function Name="GetAllExamType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sadiq" />
         <Function Name="GetAllVendors" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sadiq" />
         <Function Name="GetMailDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sadiq" />
       </Schema></edmx:StorageModels>
@@ -551,7 +686,6 @@
         <EntityContainer Name="sadiqEntities2" p1:LazyLoadingEnabled="true">
           <EntitySet Name="academies" EntityType="sadiqModel.academy" />
           <EntitySet Name="accounts" EntityType="sadiqModel.account" />
-          <EntitySet Name="candidates" EntityType="sadiqModel.candidate" />
           <EntitySet Name="clients" EntityType="sadiqModel.client" />
           <EntitySet Name="complimentaryvouchers" EntityType="sadiqModel.complimentaryvoucher" />
           <EntitySet Name="confighiredprometrics" EntityType="sadiqModel.confighiredprometric" />
@@ -559,34 +693,28 @@
           <EntitySet Name="examnatures" EntityType="sadiqModel.examnature" />
           <EntitySet Name="exams" EntityType="sadiqModel.exam" />
           <EntitySet Name="examstrainings" EntityType="sadiqModel.examstraining" />
+          <EntitySet Name="examtypes" EntityType="sadiqModel.examtype" />
           <EntitySet Name="expenses" EntityType="sadiqModel.expens" />
           <EntitySet Name="institutes" EntityType="sadiqModel.institute" />
           <EntitySet Name="mails" EntityType="sadiqModel.mail" />
+          <EntitySet Name="pearsoncandidates" EntityType="sadiqModel.pearsoncandidate" />
           <EntitySet Name="pricings" EntityType="sadiqModel.pricing" />
           <EntitySet Name="prometrics" EntityType="sadiqModel.prometric" />
+          <EntitySet Name="prometriccandidates" EntityType="sadiqModel.prometriccandidate" />
           <EntitySet Name="prometricpromotions" EntityType="sadiqModel.prometricpromotion" />
+          <EntitySet Name="purchasingpricings" EntityType="sadiqModel.purchasingpricing" />
+          <EntitySet Name="techcentreadmins" EntityType="sadiqModel.techcentreadmin" />
+          <EntitySet Name="trainers" EntityType="sadiqModel.trainer" />
           <EntitySet Name="trainingaccounts" EntityType="sadiqModel.trainingaccount" />
           <EntitySet Name="vendors" EntityType="sadiqModel.vendor" />
           <EntitySet Name="vouchers" EntityType="sadiqModel.voucher" />
           <AssociationSet Name="FK_Candidate_Academy" Association="sadiqModel.FK_Candidate_Academy">
             <End Role="academy" EntitySet="academies" />
-            <End Role="candidate" EntitySet="candidates" />
+            <End Role="pearsoncandidate" EntitySet="pearsoncandidates" />
           </AssociationSet>
           <AssociationSet Name="FK_Accounts_Institute" Association="sadiqModel.FK_Accounts_Institute">
             <End Role="institute" EntitySet="institutes" />
             <End Role="accounts" EntitySet="accounts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Candidate_Exams" Association="sadiqModel.FK_Candidate_Exams">
-            <End Role="exams" EntitySet="exams" />
-            <End Role="candidate" EntitySet="candidates" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Candidate_Institute" Association="sadiqModel.FK_Candidate_Institute">
-            <End Role="institute" EntitySet="institutes" />
-            <End Role="candidate" EntitySet="candidates" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Candidate_Voucher" Association="sadiqModel.FK_Candidate_Voucher">
-            <End Role="voucher" EntitySet="vouchers" />
-            <End Role="candidate" EntitySet="candidates" />
           </AssociationSet>
           <AssociationSet Name="FK_Client_Exams" Association="sadiqModel.FK_Client_Exams">
             <End Role="client" EntitySet="clients" />
@@ -600,25 +728,41 @@
             <End Role="client" EntitySet="clients" />
             <End Role="pricing" EntitySet="pricings" />
           </AssociationSet>
-          <AssociationSet Name="FK_Voucher_client" Association="sadiqModel.FK_Voucher_client">
+          <AssociationSet Name="FK_PurchasingPricing_Client" Association="sadiqModel.FK_PurchasingPricing_Client">
             <End Role="client" EntitySet="clients" />
+            <End Role="purchasingpricing" EntitySet="purchasingpricings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Voucher_ComplimentaryVoucher" Association="sadiqModel.FK_Voucher_ComplimentaryVoucher">
+            <End Role="complimentaryvoucher" EntitySet="complimentaryvouchers" />
             <End Role="voucher" EntitySet="vouchers" />
           </AssociationSet>
           <AssociationSet Name="FK_Prometric_ConfigPrometric" Association="sadiqModel.FK_Prometric_ConfigPrometric">
             <End Role="prometric" EntitySet="prometrics" />
             <End Role="confighiredprometric" EntitySet="confighiredprometrics" />
           </AssociationSet>
-          <AssociationSet Name="FK_Voucher_ExamNature" Association="sadiqModel.FK_Voucher_ExamNature">
-            <End Role="examnature" EntitySet="examnatures" />
-            <End Role="voucher" EntitySet="vouchers" />
+          <AssociationSet Name="FK_Candidate_Exams" Association="sadiqModel.FK_Candidate_Exams">
+            <End Role="exams" EntitySet="exams" />
+            <End Role="pearsoncandidate" EntitySet="pearsoncandidates" />
           </AssociationSet>
           <AssociationSet Name="FK_ExamsTraining_Exams" Association="sadiqModel.FK_ExamsTraining_Exams">
             <End Role="exams" EntitySet="exams" />
             <End Role="examstraining" EntitySet="examstrainings" />
           </AssociationSet>
+          <AssociationSet Name="FK_ExamsTraining_Trainer" Association="sadiqModel.FK_ExamsTraining_Trainer">
+            <End Role="trainer" EntitySet="trainers" />
+            <End Role="examstraining" EntitySet="examstrainings" />
+          </AssociationSet>
           <AssociationSet Name="FK_TrainingAccount_Accounts" Association="sadiqModel.FK_TrainingAccount_Accounts">
             <End Role="examstraining" EntitySet="examstrainings" />
             <End Role="trainingaccounts" EntitySet="trainingaccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Expenses_Prometric" Association="sadiqModel.FK_Expenses_Prometric">
+            <End Role="prometric" EntitySet="prometrics" />
+            <End Role="expenses" EntitySet="expenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidate_Institute" Association="sadiqModel.FK_Candidate_Institute">
+            <End Role="institute" EntitySet="institutes" />
+            <End Role="pearsoncandidate" EntitySet="pearsoncandidates" />
           </AssociationSet>
           <AssociationSet Name="FK_Mail_Institute" Association="sadiqModel.FK_Mail_Institute">
             <End Role="institute" EntitySet="institutes" />
@@ -628,13 +772,26 @@
             <End Role="institute" EntitySet="institutes" />
             <End Role="pricing" EntitySet="pricings" />
           </AssociationSet>
+          <AssociationSet Name="FK_Candidate_Voucher" Association="sadiqModel.FK_Candidate_Voucher">
+            <End Role="voucher" EntitySet="vouchers" />
+            <End Role="pearsoncandidate" EntitySet="pearsoncandidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prometric_TCAAdmin" Association="sadiqModel.FK_Prometric_TCAAdmin">
+            <End Role="techcentreadmin" EntitySet="techcentreadmins" />
+            <End Role="prometric" EntitySet="prometrics" />
+          </AssociationSet>
           <AssociationSet Name="FK_prometricpromotions_prometric" Association="sadiqModel.FK_prometricpromotions_prometric">
             <End Role="prometric" EntitySet="prometrics" />
             <End Role="prometricpromotions" EntitySet="prometricpromotions" />
           </AssociationSet>
-          <FunctionImport Name="GetAllExamCodes" />
-          <FunctionImport Name="GetAllVendors" />
-          <FunctionImport Name="GetMailDetails" />
+          <AssociationSet Name="FK_PrometricCandidate_Voucher" Association="sadiqModel.FK_PrometricCandidate_Voucher">
+            <End Role="voucher" EntitySet="vouchers" />
+            <End Role="prometriccandidate" EntitySet="prometriccandidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchasingPricing_Vendor" Association="sadiqModel.FK_PurchasingPricing_Vendor">
+            <End Role="vendors" EntitySet="vendors" />
+            <End Role="purchasingpricing" EntitySet="purchasingpricings" />
+          </AssociationSet>
           <AssociationSet Name="FK_Mail_Client" Association="sadiqModel.FK_Mail_Client">
             <End Role="client" EntitySet="clients" />
             <End Role="mail" EntitySet="mails" />
@@ -650,7 +807,7 @@
           <Property Name="Phone" Type="Int32" Nullable="false" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="Address" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="candidates" Relationship="sadiqModel.FK_Candidate_Academy" FromRole="academy" ToRole="candidate" />
+          <NavigationProperty Name="pearsoncandidates" Relationship="sadiqModel.FK_Candidate_Academy" FromRole="academy" ToRole="pearsoncandidate" />
         </EntityType>
         <EntityType Name="account">
           <Key>
@@ -666,32 +823,6 @@
           <Property Name="CandidateId" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="institute" Relationship="sadiqModel.FK_Accounts_Institute" FromRole="accounts" ToRole="institute" />
         </EntityType>
-        <EntityType Name="candidate">
-          <Key>
-            <PropertyRef Name="FirstName" />
-            <PropertyRef Name="EmailAddress" />
-          </Key>
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="256" Unicode="false" FixedLength="false" />
-          <Property Name="LastName" Type="String" MaxLength="256" Unicode="false" FixedLength="false" />
-          <Property Name="ExamNature" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
-          <Property Name="ExamId" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
-          <Property Name="VoucherId" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
-          <Property Name="CandidateId" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
-          <Property Name="ExamStatus" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
-          <Property Name="Attempts" Type="Int16" />
-          <Property Name="ExamDatel" Type="DateTime" />
-          <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="127" Unicode="false" FixedLength="false" />
-          <Property Name="ExamEmailAddress" Type="String" MaxLength="127" Unicode="false" FixedLength="false" />
-          <Property Name="ExamEmailPassword" Type="String" MaxLength="127" Unicode="false" FixedLength="false" />
-          <Property Name="Address" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
-          <Property Name="Phone" Type="Int32" />
-          <Property Name="InstituteId" Type="Int32" />
-          <Property Name="AcademyId" Type="Int32" />
-          <NavigationProperty Name="academy" Relationship="sadiqModel.FK_Candidate_Academy" FromRole="candidate" ToRole="academy" />
-          <NavigationProperty Name="exam" Relationship="sadiqModel.FK_Candidate_Exams" FromRole="candidate" ToRole="exams" />
-          <NavigationProperty Name="institute" Relationship="sadiqModel.FK_Candidate_Institute" FromRole="candidate" ToRole="institute" />
-          <NavigationProperty Name="voucher" Relationship="sadiqModel.FK_Candidate_Voucher" FromRole="candidate" ToRole="voucher" />
-        </EntityType>
         <EntityType Name="client">
           <Key>
             <PropertyRef Name="Id" />
@@ -702,7 +833,7 @@
           <NavigationProperty Name="exams" Relationship="sadiqModel.FK_Client_Exams" FromRole="client" ToRole="exams" />
           <NavigationProperty Name="examcodes" Relationship="sadiqModel.FK_Codes_Client" FromRole="client" ToRole="examcodes" />
           <NavigationProperty Name="pricings" Relationship="sadiqModel.FK_Pricing_Client" FromRole="client" ToRole="pricing" />
-          <NavigationProperty Name="vouchers" Relationship="sadiqModel.FK_Voucher_client" FromRole="client" ToRole="voucher" />
+          <NavigationProperty Name="purchasingpricings" Relationship="sadiqModel.FK_PurchasingPricing_Client" FromRole="client" ToRole="purchasingpricing" />
           <NavigationProperty Name="mails" Relationship="sadiqModel.FK_Mail_Client" FromRole="client" ToRole="mail" />
         </EntityType>
         <EntityType Name="complimentaryvoucher">
@@ -717,6 +848,7 @@
           <Property Name="ReceivedDate" Type="DateTime" />
           <Property Name="Expiry" Type="DateTime" />
           <Property Name="Price" Type="Int32" />
+          <NavigationProperty Name="vouchers" Relationship="sadiqModel.FK_Voucher_ComplimentaryVoucher" FromRole="complimentaryvoucher" ToRole="voucher" />
         </EntityType>
         <EntityType Name="confighiredprometric">
           <Key>
@@ -743,18 +875,17 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="127" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="vouchers" Relationship="sadiqModel.FK_Voucher_ExamNature" FromRole="examnature" ToRole="voucher" />
         </EntityType>
         <EntityType Name="exam">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="String" Nullable="false" MaxLength="7" Unicode="false" FixedLength="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="127" Unicode="false" FixedLength="false" />
+          <Property Name="ExamNo" Type="String" Nullable="false" MaxLength="127" Unicode="false" FixedLength="false" />
           <Property Name="ClientId" Type="String" Nullable="false" MaxLength="31" Unicode="false" FixedLength="false" />
           <Property Name="Title" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="candidates" Relationship="sadiqModel.FK_Candidate_Exams" FromRole="exams" ToRole="candidate" />
           <NavigationProperty Name="client" Relationship="sadiqModel.FK_Client_Exams" FromRole="exams" ToRole="client" />
+          <NavigationProperty Name="pearsoncandidates" Relationship="sadiqModel.FK_Candidate_Exams" FromRole="exams" ToRole="pearsoncandidate" />
           <NavigationProperty Name="examstrainings" Relationship="sadiqModel.FK_ExamsTraining_Exams" FromRole="exams" ToRole="examstraining" />
         </EntityType>
         <EntityType Name="examstraining">
@@ -763,14 +894,21 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="ExamId" Type="String" MaxLength="7" Unicode="false" FixedLength="false" />
-          <Property Name="TrainerName" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="TrainerPhone" Type="Int32" />
           <Property Name="StartDate" Type="DateTime" />
           <Property Name="EndDate" Type="DateTime" />
           <Property Name="TrainingCost" Type="Int32" />
           <Property Name="TotalAmountReceived" Type="Int32" />
+          <Property Name="TrainerID" Type="Int32" />
           <NavigationProperty Name="exam" Relationship="sadiqModel.FK_ExamsTraining_Exams" FromRole="examstraining" ToRole="exams" />
+          <NavigationProperty Name="trainer" Relationship="sadiqModel.FK_ExamsTraining_Trainer" FromRole="examstraining" ToRole="trainer" />
           <NavigationProperty Name="trainingaccounts" Relationship="sadiqModel.FK_TrainingAccount_Accounts" FromRole="examstraining" ToRole="trainingaccounts" />
+        </EntityType>
+        <EntityType Name="examtype">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ExamType1" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
         </EntityType>
         <EntityType Name="expens">
           <Key>
@@ -780,6 +918,9 @@
           <Property Name="ExpenseType" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="AmountPaid" Type="Int32" />
           <Property Name="Date" Type="DateTime" />
+          <Property Name="PaymentChannel" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="SiteId" Type="Int32" />
+          <NavigationProperty Name="prometric" Relationship="sadiqModel.FK_Expenses_Prometric" FromRole="expenses" ToRole="prometric" />
         </EntityType>
         <EntityType Name="institute">
           <Key>
@@ -794,7 +935,7 @@
           <Property Name="CreditAllowed" Type="Int32" />
           <Property Name="CreditRemaining" Type="Int32" />
           <NavigationProperty Name="accounts" Relationship="sadiqModel.FK_Accounts_Institute" FromRole="institute" ToRole="accounts" />
-          <NavigationProperty Name="candidates" Relationship="sadiqModel.FK_Candidate_Institute" FromRole="institute" ToRole="candidate" />
+          <NavigationProperty Name="pearsoncandidates" Relationship="sadiqModel.FK_Candidate_Institute" FromRole="institute" ToRole="pearsoncandidate" />
           <NavigationProperty Name="mails" Relationship="sadiqModel.FK_Mail_Institute" FromRole="institute" ToRole="mail" />
           <NavigationProperty Name="pricings" Relationship="sadiqModel.FK_Pricing_Institute" FromRole="institute" ToRole="pricing" />
         </EntityType>
@@ -812,9 +953,36 @@
           <Property Name="InstituteId" Type="Int32" />
           <Property Name="VoucherNo" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="CommittedPrice" Type="Int32" />
+          <Property Name="StudentMailId" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="institute" Relationship="sadiqModel.FK_Mail_Institute" FromRole="mail" ToRole="institute" />
-          <Property Type="String" Name="Client" MaxLength="31" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="client" MaxLength="31" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="client1" Relationship="sadiqModel.FK_Mail_Client" FromRole="mail" ToRole="client" />
+        </EntityType>
+        <EntityType Name="pearsoncandidate">
+          <Key>
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="EmailAddress" />
+          </Key>
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="256" Unicode="false" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="256" Unicode="false" FixedLength="false" />
+          <Property Name="ExamNature" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="ExamId" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="VoucherId" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="CandidateId" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="ExamStatus" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Attempts" Type="Int16" />
+          <Property Name="ExamDatel" Type="DateTime" />
+          <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="127" Unicode="false" FixedLength="false" />
+          <Property Name="ExamEmailAddress" Type="String" MaxLength="127" Unicode="false" FixedLength="false" />
+          <Property Name="ExamEmailPassword" Type="String" MaxLength="127" Unicode="false" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="Phone" Type="Int32" />
+          <Property Name="InstituteId" Type="Int32" />
+          <Property Name="AcademyId" Type="Int32" />
+          <NavigationProperty Name="academy" Relationship="sadiqModel.FK_Candidate_Academy" FromRole="pearsoncandidate" ToRole="academy" />
+          <NavigationProperty Name="exam" Relationship="sadiqModel.FK_Candidate_Exams" FromRole="pearsoncandidate" ToRole="exams" />
+          <NavigationProperty Name="institute" Relationship="sadiqModel.FK_Candidate_Institute" FromRole="pearsoncandidate" ToRole="institute" />
+          <NavigationProperty Name="voucher" Relationship="sadiqModel.FK_Candidate_Voucher" FromRole="pearsoncandidate" ToRole="voucher" />
         </EntityType>
         <EntityType Name="pricing">
           <Key>
@@ -825,9 +993,10 @@
           <Property Name="ClientId" Type="String" MaxLength="31" Unicode="false" FixedLength="false" />
           <Property Name="VoucherType" Type="String" MaxLength="127" Unicode="false" FixedLength="false" />
           <Property Name="VoucherNature" Type="String" MaxLength="127" Unicode="false" FixedLength="false" />
-          <Property Name="Price" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
-          <Property Name="IsWithoutVoucher" Type="Boolean" />
+          <Property Name="PriceWithVoucher" Type="Int64" />
+          <Property Name="PriceWithoutVoucher" Type="Int64" />
           <Property Name="PriceDate" Type="DateTime" />
+          <Property Name="PriceWithTraining" Type="Int64" />
           <NavigationProperty Name="client" Relationship="sadiqModel.FK_Pricing_Client" FromRole="pricing" ToRole="client" />
           <NavigationProperty Name="institute" Relationship="sadiqModel.FK_Pricing_Institute" FromRole="pricing" ToRole="institute" />
         </EntityType>
@@ -842,9 +1011,23 @@
           <Property Name="POCEmail" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="SiteAddress" Type="String" Nullable="false" MaxLength="999" Unicode="false" FixedLength="false" />
           <Property Name="IsHired" Type="Boolean" />
-          <Property Name="PerExamProfit" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="PerExamProfit" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="TCAAdminId" Type="Int32" />
+          <Property Name="SiteOwnerName" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="confighiredprometrics" Relationship="sadiqModel.FK_Prometric_ConfigPrometric" FromRole="prometric" ToRole="confighiredprometric" />
+          <NavigationProperty Name="expenses" Relationship="sadiqModel.FK_Expenses_Prometric" FromRole="prometric" ToRole="expenses" />
+          <NavigationProperty Name="techcentreadmin" Relationship="sadiqModel.FK_Prometric_TCAAdmin" FromRole="prometric" ToRole="techcentreadmin" />
           <NavigationProperty Name="prometricpromotions" Relationship="sadiqModel.FK_prometricpromotions_prometric" FromRole="prometric" ToRole="prometricpromotions" />
+        </EntityType>
+        <EntityType Name="prometriccandidate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CiscoClientId" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ConnectionId" Type="Int32" />
+          <Property Name="VoucherId" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="voucher" Relationship="sadiqModel.FK_PrometricCandidate_Voucher" FromRole="prometriccandidate" ToRole="voucher" />
         </EntityType>
         <EntityType Name="prometricpromotion">
           <Key>
@@ -857,6 +1040,44 @@
           <Property Name="MarginGain" Type="Int32" />
           <Property Name="MarginMiss" Type="Int32" />
           <NavigationProperty Name="prometric" Relationship="sadiqModel.FK_prometricpromotions_prometric" FromRole="prometricpromotions" ToRole="prometric" />
+        </EntityType>
+        <EntityType Name="purchasingpricing">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorId" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="ClientId" Type="String" MaxLength="31" Unicode="false" FixedLength="false" />
+          <Property Name="VoucherType" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="VoucherNature" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="PurchaseDate" Type="DateTime" />
+          <Property Name="BatchNo" Type="Int32" />
+          <NavigationProperty Name="client" Relationship="sadiqModel.FK_PurchasingPricing_Client" FromRole="purchasingpricing" ToRole="client" />
+          <NavigationProperty Name="vendor" Relationship="sadiqModel.FK_PurchasingPricing_Vendor" FromRole="purchasingpricing" ToRole="vendors" />
+        </EntityType>
+        <EntityType Name="techcentreadmin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="SecurityQuestion1" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="AnswerQuestion1" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="SecurityQuestion2" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="AnswerQuestion2" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="UserName" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="prometrics" Relationship="sadiqModel.FK_Prometric_TCAAdmin" FromRole="techcentreadmin" ToRole="prometric" />
+        </EntityType>
+        <EntityType Name="trainer">
+          <Key>
+            <PropertyRef Name="TrainerID" />
+          </Key>
+          <Property Name="TrainerID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TrainerName" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="TrainerPhone" Type="Int32" />
+          <NavigationProperty Name="examstrainings" Relationship="sadiqModel.FK_ExamsTraining_Trainer" FromRole="trainer" ToRole="examstraining" />
         </EntityType>
         <EntityType Name="trainingaccount">
           <Key>
@@ -874,6 +1095,7 @@
           </Key>
           <Property Name="Id" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
           <Property Name="Name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="purchasingpricings" Relationship="sadiqModel.FK_PurchasingPricing_Vendor" FromRole="vendors" ToRole="purchasingpricing" />
         </EntityType>
         <EntityType Name="voucher">
           <Key>
@@ -881,27 +1103,20 @@
           </Key>
           <Property Name="Id" Type="String" Nullable="false" MaxLength="127" Unicode="false" FixedLength="false" />
           <Property Name="Vendor" Type="String" MaxLength="127" Unicode="false" FixedLength="false" />
-          <Property Name="Type" Type="String" MaxLength="127" Unicode="false" FixedLength="false" />
-          <Property Name="Nature" Type="Int32" />
-          <Property Name="ClientId" Type="String" MaxLength="31" Unicode="false" FixedLength="false" />
-          <Property Name="ReceivedDate" Type="DateTime" />
-          <Property Name="Expiry" Type="DateTime" />
-          <Property Name="IsComplimentaryVoucher" Type="Boolean" />
-          <Property Name="Price" Type="Int32" />
           <Property Name="VoucherNo" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Batch" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="candidates" Relationship="sadiqModel.FK_Candidate_Voucher" FromRole="voucher" ToRole="candidate" />
-          <NavigationProperty Name="client" Relationship="sadiqModel.FK_Voucher_client" FromRole="voucher" ToRole="client" />
-          <NavigationProperty Name="examnature" Relationship="sadiqModel.FK_Voucher_ExamNature" FromRole="voucher" ToRole="examnature" />
+          <Property Name="BatchId" Type="Int32" />
+          <NavigationProperty Name="complimentaryvoucher" Relationship="sadiqModel.FK_Voucher_ComplimentaryVoucher" FromRole="voucher" ToRole="complimentaryvoucher" />
+          <NavigationProperty Name="pearsoncandidates" Relationship="sadiqModel.FK_Candidate_Voucher" FromRole="voucher" ToRole="pearsoncandidate" />
+          <NavigationProperty Name="prometriccandidates" Relationship="sadiqModel.FK_PrometricCandidate_Voucher" FromRole="voucher" ToRole="prometriccandidate" />
         </EntityType>
         <Association Name="FK_Candidate_Academy">
           <End Role="academy" Type="sadiqModel.academy" Multiplicity="0..1" />
-          <End Role="candidate" Type="sadiqModel.candidate" Multiplicity="*" />
+          <End Role="pearsoncandidate" Type="sadiqModel.pearsoncandidate" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="academy">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="candidate">
+            <Dependent Role="pearsoncandidate">
               <PropertyRef Name="AcademyId" />
             </Dependent>
           </ReferentialConstraint>
@@ -915,42 +1130,6 @@
             </Principal>
             <Dependent Role="accounts">
               <PropertyRef Name="InstituteId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Candidate_Exams">
-          <End Role="exams" Type="sadiqModel.exam" Multiplicity="0..1" />
-          <End Role="candidate" Type="sadiqModel.candidate" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="exams">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="candidate">
-              <PropertyRef Name="ExamId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Candidate_Institute">
-          <End Role="institute" Type="sadiqModel.institute" Multiplicity="0..1" />
-          <End Role="candidate" Type="sadiqModel.candidate" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="institute">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="candidate">
-              <PropertyRef Name="InstituteId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Candidate_Voucher">
-          <End Role="voucher" Type="sadiqModel.voucher" Multiplicity="0..1" />
-          <End Role="candidate" Type="sadiqModel.candidate" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="voucher">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="candidate">
-              <PropertyRef Name="VoucherId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -990,15 +1169,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Voucher_client">
+        <Association Name="FK_PurchasingPricing_Client">
           <End Role="client" Type="sadiqModel.client" Multiplicity="0..1" />
-          <End Role="voucher" Type="sadiqModel.voucher" Multiplicity="*" />
+          <End Role="purchasingpricing" Type="sadiqModel.purchasingpricing" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="client">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="voucher">
+            <Dependent Role="purchasingpricing">
               <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Voucher_ComplimentaryVoucher">
+          <End Role="complimentaryvoucher" Type="sadiqModel.complimentaryvoucher" Multiplicity="0..1" />
+          <End Role="voucher" Type="sadiqModel.voucher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="complimentaryvoucher">
+              <PropertyRef Name="BatchId" />
+            </Principal>
+            <Dependent Role="voucher">
+              <PropertyRef Name="BatchId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1014,15 +1205,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Voucher_ExamNature">
-          <End Role="examnature" Type="sadiqModel.examnature" Multiplicity="0..1" />
-          <End Role="voucher" Type="sadiqModel.voucher" Multiplicity="*" />
+        <Association Name="FK_Candidate_Exams">
+          <End Role="exams" Type="sadiqModel.exam" Multiplicity="0..1" />
+          <End Role="pearsoncandidate" Type="sadiqModel.pearsoncandidate" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="examnature">
+            <Principal Role="exams">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="voucher">
-              <PropertyRef Name="Nature" />
+            <Dependent Role="pearsoncandidate">
+              <PropertyRef Name="ExamId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1038,6 +1229,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ExamsTraining_Trainer">
+          <End Role="trainer" Type="sadiqModel.trainer" Multiplicity="0..1" />
+          <End Role="examstraining" Type="sadiqModel.examstraining" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="trainer">
+              <PropertyRef Name="TrainerID" />
+            </Principal>
+            <Dependent Role="examstraining">
+              <PropertyRef Name="TrainerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TrainingAccount_Accounts">
           <End Role="examstraining" Type="sadiqModel.examstraining" Multiplicity="0..1" />
           <End Role="trainingaccounts" Type="sadiqModel.trainingaccount" Multiplicity="*" />
@@ -1047,6 +1250,30 @@
             </Principal>
             <Dependent Role="trainingaccounts">
               <PropertyRef Name="TrainingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Expenses_Prometric">
+          <End Role="prometric" Type="sadiqModel.prometric" Multiplicity="0..1" />
+          <End Role="expenses" Type="sadiqModel.expens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="prometric">
+              <PropertyRef Name="SiteId" />
+            </Principal>
+            <Dependent Role="expenses">
+              <PropertyRef Name="SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidate_Institute">
+          <End Role="institute" Type="sadiqModel.institute" Multiplicity="0..1" />
+          <End Role="pearsoncandidate" Type="sadiqModel.pearsoncandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="institute">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="pearsoncandidate">
+              <PropertyRef Name="InstituteId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1074,6 +1301,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Candidate_Voucher">
+          <End Role="voucher" Type="sadiqModel.voucher" Multiplicity="0..1" />
+          <End Role="pearsoncandidate" Type="sadiqModel.pearsoncandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="voucher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="pearsoncandidate">
+              <PropertyRef Name="VoucherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prometric_TCAAdmin">
+          <End Role="techcentreadmin" Type="sadiqModel.techcentreadmin" Multiplicity="0..1" />
+          <End Role="prometric" Type="sadiqModel.prometric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="techcentreadmin">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="prometric">
+              <PropertyRef Name="TCAAdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_prometricpromotions_prometric">
           <End Role="prometric" Type="sadiqModel.prometric" Multiplicity="0..1" />
           <End Role="prometricpromotions" Type="sadiqModel.prometricpromotion" Multiplicity="*" />
@@ -1086,6 +1337,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PrometricCandidate_Voucher">
+          <End Role="voucher" Type="sadiqModel.voucher" Multiplicity="0..1" />
+          <End Role="prometriccandidate" Type="sadiqModel.prometriccandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="voucher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="prometriccandidate">
+              <PropertyRef Name="VoucherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchasingPricing_Vendor">
+          <End Role="vendors" Type="sadiqModel.vendor" Multiplicity="0..1" />
+          <End Role="purchasingpricing" Type="sadiqModel.purchasingpricing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vendors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="purchasingpricing">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Mail_Client">
           <End Type="sadiqModel.client" Role="client" Multiplicity="0..1" />
           <End Type="sadiqModel.mail" Role="mail" Multiplicity="*" />
@@ -1094,7 +1369,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="mail">
-              <PropertyRef Name="Client" />
+              <PropertyRef Name="client" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1127,28 +1402,6 @@
                 <ScalarProperty Name="AmountCredited" ColumnName="AmountCredited" />
                 <ScalarProperty Name="VoucherId" ColumnName="VoucherId" />
                 <ScalarProperty Name="CandidateId" ColumnName="CandidateId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="candidates">
-            <EntityTypeMapping TypeName="sadiqModel.candidate">
-              <MappingFragment StoreEntitySet="candidate">
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="ExamNature" ColumnName="ExamNature" />
-                <ScalarProperty Name="ExamId" ColumnName="ExamId" />
-                <ScalarProperty Name="VoucherId" ColumnName="VoucherId" />
-                <ScalarProperty Name="CandidateId" ColumnName="CandidateId" />
-                <ScalarProperty Name="ExamStatus" ColumnName="ExamStatus" />
-                <ScalarProperty Name="Attempts" ColumnName="Attempts" />
-                <ScalarProperty Name="ExamDatel" ColumnName="ExamDatel" />
-                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
-                <ScalarProperty Name="ExamEmailAddress" ColumnName="ExamEmailAddress" />
-                <ScalarProperty Name="ExamEmailPassword" ColumnName="ExamEmailPassword" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
-                <ScalarProperty Name="AcademyId" ColumnName="AcademyId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1206,7 +1459,7 @@
             <EntityTypeMapping TypeName="sadiqModel.exam">
               <MappingFragment StoreEntitySet="exams">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ExamNo" ColumnName="ExamNo" />
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
               </MappingFragment>
@@ -1217,12 +1470,19 @@
               <MappingFragment StoreEntitySet="examstraining">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ExamId" ColumnName="ExamId" />
-                <ScalarProperty Name="TrainerName" ColumnName="TrainerName" />
-                <ScalarProperty Name="TrainerPhone" ColumnName="TrainerPhone" />
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
                 <ScalarProperty Name="TrainingCost" ColumnName="TrainingCost" />
                 <ScalarProperty Name="TotalAmountReceived" ColumnName="TotalAmountReceived" />
+                <ScalarProperty Name="TrainerID" ColumnName="TrainerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="examtypes">
+            <EntityTypeMapping TypeName="sadiqModel.examtype">
+              <MappingFragment StoreEntitySet="examtype">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ExamType1" ColumnName="ExamType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1233,6 +1493,8 @@
                 <ScalarProperty Name="ExpenseType" ColumnName="ExpenseType" />
                 <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="PaymentChannel" ColumnName="PaymentChannel" />
+                <ScalarProperty Name="SiteId" ColumnName="SiteId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1253,7 +1515,7 @@
           <EntitySetMapping Name="mails">
             <EntityTypeMapping TypeName="sadiqModel.mail">
               <MappingFragment StoreEntitySet="mail">
-                <ScalarProperty Name="Client" ColumnName="Client" />
+                <ScalarProperty Name="client" ColumnName="client" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ReceivedDate" ColumnName="ReceivedDate" />
                 <ScalarProperty Name="CandidateName" ColumnName="CandidateName" />
@@ -1264,6 +1526,29 @@
                 <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
                 <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
                 <ScalarProperty Name="CommittedPrice" ColumnName="CommittedPrice" />
+                <ScalarProperty Name="StudentMailId" ColumnName="StudentMailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pearsoncandidates">
+            <EntityTypeMapping TypeName="sadiqModel.pearsoncandidate">
+              <MappingFragment StoreEntitySet="pearsoncandidate">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="ExamNature" ColumnName="ExamNature" />
+                <ScalarProperty Name="ExamId" ColumnName="ExamId" />
+                <ScalarProperty Name="VoucherId" ColumnName="VoucherId" />
+                <ScalarProperty Name="CandidateId" ColumnName="CandidateId" />
+                <ScalarProperty Name="ExamStatus" ColumnName="ExamStatus" />
+                <ScalarProperty Name="Attempts" ColumnName="Attempts" />
+                <ScalarProperty Name="ExamDatel" ColumnName="ExamDatel" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="ExamEmailAddress" ColumnName="ExamEmailAddress" />
+                <ScalarProperty Name="ExamEmailPassword" ColumnName="ExamEmailPassword" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="InstituteId" ColumnName="InstituteId" />
+                <ScalarProperty Name="AcademyId" ColumnName="AcademyId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1275,9 +1560,10 @@
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />
                 <ScalarProperty Name="VoucherType" ColumnName="VoucherType" />
                 <ScalarProperty Name="VoucherNature" ColumnName="VoucherNature" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="IsWithoutVoucher" ColumnName="IsWithoutVoucher" />
+                <ScalarProperty Name="PriceWithVoucher" ColumnName="PriceWithVoucher" />
+                <ScalarProperty Name="PriceWithoutVoucher" ColumnName="PriceWithoutVoucher" />
                 <ScalarProperty Name="PriceDate" ColumnName="PriceDate" />
+                <ScalarProperty Name="PriceWithTraining" ColumnName="PriceWithTraining" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1292,6 +1578,18 @@
                 <ScalarProperty Name="SiteAddress" ColumnName="SiteAddress" />
                 <ScalarProperty Name="IsHired" ColumnName="IsHired" />
                 <ScalarProperty Name="PerExamProfit" ColumnName="PerExamProfit" />
+                <ScalarProperty Name="TCAAdminId" ColumnName="TCAAdminId" />
+                <ScalarProperty Name="SiteOwnerName" ColumnName="SiteOwnerName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="prometriccandidates">
+            <EntityTypeMapping TypeName="sadiqModel.prometriccandidate">
+              <MappingFragment StoreEntitySet="prometriccandidate">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CiscoClientId" ColumnName="CiscoClientId" />
+                <ScalarProperty Name="ConnectionId" ColumnName="ConnectionId" />
+                <ScalarProperty Name="VoucherId" ColumnName="VoucherId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1304,6 +1602,43 @@
                 <ScalarProperty Name="DateTo" ColumnName="DateTo" />
                 <ScalarProperty Name="MarginGain" ColumnName="MarginGain" />
                 <ScalarProperty Name="MarginMiss" ColumnName="MarginMiss" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="purchasingpricings">
+            <EntityTypeMapping TypeName="sadiqModel.purchasingpricing">
+              <MappingFragment StoreEntitySet="purchasingpricing">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="VoucherType" ColumnName="VoucherType" />
+                <ScalarProperty Name="VoucherNature" ColumnName="VoucherNature" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="techcentreadmins">
+            <EntityTypeMapping TypeName="sadiqModel.techcentreadmin">
+              <MappingFragment StoreEntitySet="techcentreadmin">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SecurityQuestion1" ColumnName="SecurityQuestion1" />
+                <ScalarProperty Name="AnswerQuestion1" ColumnName="AnswerQuestion1" />
+                <ScalarProperty Name="SecurityQuestion2" ColumnName="SecurityQuestion2" />
+                <ScalarProperty Name="AnswerQuestion2" ColumnName="AnswerQuestion2" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="trainers">
+            <EntityTypeMapping TypeName="sadiqModel.trainer">
+              <MappingFragment StoreEntitySet="trainer">
+                <ScalarProperty Name="TrainerID" ColumnName="TrainerID" />
+                <ScalarProperty Name="TrainerName" ColumnName="TrainerName" />
+                <ScalarProperty Name="TrainerPhone" ColumnName="TrainerPhone" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1330,21 +1665,11 @@
               <MappingFragment StoreEntitySet="voucher">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Vendor" ColumnName="Vendor" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Nature" ColumnName="Nature" />
-                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
-                <ScalarProperty Name="ReceivedDate" ColumnName="ReceivedDate" />
-                <ScalarProperty Name="Expiry" ColumnName="Expiry" />
-                <ScalarProperty Name="IsComplimentaryVoucher" ColumnName="IsComplimentaryVoucher" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
-                <ScalarProperty Name="Batch" ColumnName="Batch" />
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetAllExamCodes" FunctionName="sadiqModel.Store.GetAllExamCodes" />
-          <FunctionImportMapping FunctionImportName="GetAllVendors" FunctionName="sadiqModel.Store.GetAllVendors" />
-          <FunctionImportMapping FunctionImportName="GetMailDetails" FunctionName="sadiqModel.Store.GetMailDetails" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

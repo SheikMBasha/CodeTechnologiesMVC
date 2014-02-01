@@ -14,8 +14,6 @@ namespace CodeTechnologiesMVC
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Objects;
-    using System.Data.Objects.DataClasses;
     using System.Linq;
     
     public partial class sadiqEntities2 : DbContext
@@ -32,7 +30,6 @@ namespace CodeTechnologiesMVC
     
         public DbSet<academy> academies { get; set; }
         public DbSet<account> accounts { get; set; }
-        public DbSet<candidate> candidates { get; set; }
         public DbSet<client> clients { get; set; }
         public DbSet<complimentaryvoucher> complimentaryvouchers { get; set; }
         public DbSet<confighiredprometric> confighiredprometrics { get; set; }
@@ -40,12 +37,18 @@ namespace CodeTechnologiesMVC
         public DbSet<examnature> examnatures { get; set; }
         public DbSet<exam> exams { get; set; }
         public DbSet<examstraining> examstrainings { get; set; }
+        public DbSet<examtype> examtypes { get; set; }
         public DbSet<expens> expenses { get; set; }
         public DbSet<institute> institutes { get; set; }
         public DbSet<mail> mails { get; set; }
+        public DbSet<pearsoncandidate> pearsoncandidates { get; set; }
         public DbSet<pricing> pricings { get; set; }
         public DbSet<prometric> prometrics { get; set; }
+        public DbSet<prometriccandidate> prometriccandidates { get; set; }
         public DbSet<prometricpromotion> prometricpromotions { get; set; }
+        public DbSet<purchasingpricing> purchasingpricings { get; set; }
+        public DbSet<techcentreadmin> techcentreadmins { get; set; }
+        public DbSet<trainer> trainers { get; set; }
         public DbSet<trainingaccount> trainingaccounts { get; set; }
         public DbSet<vendor> vendors { get; set; }
         public DbSet<voucher> vouchers { get; set; }

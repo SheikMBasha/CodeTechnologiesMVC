@@ -118,7 +118,7 @@ namespace CodeTechnologiesMVC.Controllers
                             tempmailObj.ScheduledDate = (DateTime)ds.Tables[0].Rows[i]["ScheduledDate"];
                             tempmailObj.InstituteId = instituteId;
                             tempmailObj.VoucherNo = ds.Tables[0].Rows[i]["VoucherNo"].ToString();
-                            tempmailObj.Client = ds.Tables[0].Rows[i]["Client"].ToString();
+                            tempmailObj.client = ds.Tables[0].Rows[i]["Client"].ToString();
                             tempmailObj.CommittedPrice = Convert.ToInt32(ds.Tables[0].Rows[i]["CommittedPrice"]);
 
                             db.mails.Add(tempmailObj);

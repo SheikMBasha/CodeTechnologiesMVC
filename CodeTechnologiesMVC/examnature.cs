@@ -14,14 +14,7 @@ namespace CodeTechnologiesMVC
     
     public partial class examnature
     {
-        public examnature()
-        {
-            this.vouchers = new HashSet<voucher>();
-        }
-    
         public int Id { get; set; }
         public string Name { get; set; }
-    
-        public virtual ICollection<voucher> vouchers { get; set; }
     }
 }

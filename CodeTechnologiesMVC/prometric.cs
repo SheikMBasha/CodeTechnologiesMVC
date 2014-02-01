@@ -17,6 +17,7 @@ namespace CodeTechnologiesMVC
         public prometric()
         {
             this.confighiredprometrics = new HashSet<confighiredprometric>();
+            this.expenses = new HashSet<expens>();
             this.prometricpromotions = new HashSet<prometricpromotion>();
         }
     
@@ -28,8 +29,12 @@ namespace CodeTechnologiesMVC
         public string SiteAddress { get; set; }
         public Nullable<bool> IsHired { get; set; }
         public string PerExamProfit { get; set; }
+        public Nullable<int> TCAAdminId { get; set; }
+        public string SiteOwnerName { get; set; }
     
         public virtual ICollection<confighiredprometric> confighiredprometrics { get; set; }
+        public virtual ICollection<expens> expenses { get; set; }
+        public virtual techcentreadmin techcentreadmin { get; set; }
         public virtual ICollection<prometricpromotion> prometricpromotions { get; set; }
     }
 }

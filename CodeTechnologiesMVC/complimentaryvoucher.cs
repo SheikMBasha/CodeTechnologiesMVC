@@ -14,6 +14,11 @@ namespace CodeTechnologiesMVC
     
     public partial class complimentaryvoucher
     {
+        public complimentaryvoucher()
+        {
+            this.vouchers = new HashSet<voucher>();
+        }
+    
         public int BatchId { get; set; }
         public string BatchNo { get; set; }
         public string Type { get; set; }
@@ -22,5 +27,7 @@ namespace CodeTechnologiesMVC
         public Nullable<System.DateTime> ReceivedDate { get; set; }
         public Nullable<System.DateTime> Expiry { get; set; }
         public Nullable<int> Price { get; set; }
+    
+        public virtual ICollection<voucher> vouchers { get; set; }
     }
 }

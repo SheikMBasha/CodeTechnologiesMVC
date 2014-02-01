@@ -17,7 +17,7 @@ namespace CodeTechnologiesMVC
         public institute()
         {
             this.accounts = new HashSet<account>();
-            this.candidates = new HashSet<candidate>();
+            this.pearsoncandidates = new HashSet<pearsoncandidate>();
             this.mails = new HashSet<mail>();
             this.pricings = new HashSet<pricing>();
         }
@@ -32,7 +32,7 @@ namespace CodeTechnologiesMVC
         public Nullable<int> CreditRemaining { get; set; }
     
         public virtual ICollection<account> accounts { get; set; }
-        public virtual ICollection<candidate> candidates { get; set; }
+        public virtual ICollection<pearsoncandidate> pearsoncandidates { get; set; }
         public virtual ICollection<mail> mails { get; set; }
         public virtual ICollection<pricing> pricings { get; set; }
     }

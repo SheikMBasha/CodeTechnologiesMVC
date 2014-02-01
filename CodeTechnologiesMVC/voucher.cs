@@ -16,23 +16,17 @@ namespace CodeTechnologiesMVC
     {
         public voucher()
         {
-            this.candidates = new HashSet<candidate>();
+            this.pearsoncandidates = new HashSet<pearsoncandidate>();
+            this.prometriccandidates = new HashSet<prometriccandidate>();
         }
     
         public string Id { get; set; }
         public string Vendor { get; set; }
-        public string Type { get; set; }
-        public Nullable<int> Nature { get; set; }
-        public string ClientId { get; set; }
-        public Nullable<System.DateTime> ReceivedDate { get; set; }
-        public Nullable<System.DateTime> Expiry { get; set; }
-        public Nullable<bool> IsComplimentaryVoucher { get; set; }
-        public Nullable<int> Price { get; set; }
         public string VoucherNo { get; set; }
-        public string Batch { get; set; }
+        public Nullable<int> BatchId { get; set; }
     
-        public virtual ICollection<candidate> candidates { get; set; }
-        public virtual client client { get; set; }
-        public virtual examnature examnature { get; set; }
+        public virtual complimentaryvoucher complimentaryvoucher { get; set; }
+        public virtual ICollection<pearsoncandidate> pearsoncandidates { get; set; }
+        public virtual ICollection<prometriccandidate> prometriccandidates { get; set; }
     }
 }

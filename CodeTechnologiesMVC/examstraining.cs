@@ -21,14 +21,14 @@ namespace CodeTechnologiesMVC
     
         public int Id { get; set; }
         public string ExamId { get; set; }
-        public string TrainerName { get; set; }
-        public Nullable<int> TrainerPhone { get; set; }
         public Nullable<System.DateTime> StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
         public Nullable<int> TrainingCost { get; set; }
         public Nullable<int> TotalAmountReceived { get; set; }
+        public Nullable<int> TrainerID { get; set; }
     
         public virtual exam exam { get; set; }
+        public virtual trainer trainer { get; set; }
         public virtual ICollection<trainingaccount> trainingaccounts { get; set; }
     }
 }

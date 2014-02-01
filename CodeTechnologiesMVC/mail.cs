@@ -24,7 +24,8 @@ namespace CodeTechnologiesMVC
         public Nullable<int> InstituteId { get; set; }
         public string VoucherNo { get; set; }
         public Nullable<int> CommittedPrice { get; set; }
-        public string Client { get; set; }
+        public string StudentMailId { get; set; }
+        public string client { get; set; }
     
         public virtual institute institute { get; set; }
         public virtual client client1 { get; set; }

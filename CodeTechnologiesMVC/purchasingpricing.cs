@@ -12,20 +12,18 @@ namespace CodeTechnologiesMVC
     using System;
     using System.Collections.Generic;
     
-    public partial class academy
+    public partial class purchasingpricing
     {
-        public academy()
-        {
-            this.pearsoncandidates = new HashSet<pearsoncandidate>();
-        }
-    
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string POCName { get; set; }
-        public int Phone { get; set; }
-        public string Email { get; set; }
-        public string Address { get; set; }
+        public string VendorId { get; set; }
+        public string ClientId { get; set; }
+        public string VoucherType { get; set; }
+        public string VoucherNature { get; set; }
+        public Nullable<int> Price { get; set; }
+        public Nullable<System.DateTime> PurchaseDate { get; set; }
+        public Nullable<int> BatchNo { get; set; }
     
-        public virtual ICollection<pearsoncandidate> pearsoncandidates { get; set; }
+        public virtual client client { get; set; }
+        public virtual vendor vendor { get; set; }
     }
 }

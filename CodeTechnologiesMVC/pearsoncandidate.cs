@@ -12,7 +12,7 @@ namespace CodeTechnologiesMVC
     using System;
     using System.Collections.Generic;
     
-    public partial class candidate
+    public partial class pearsoncandidate
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

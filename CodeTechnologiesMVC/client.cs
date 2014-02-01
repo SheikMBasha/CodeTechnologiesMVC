@@ -17,7 +17,7 @@ namespace CodeTechnologiesMVC
         public client()
         {
             this.exams = new HashSet<exam>();
-            this.codes = new HashSet<code>();
+            this.examcodes = new HashSet<examcode>();
             this.pricings = new HashSet<pricing>();
             this.vouchers = new HashSet<voucher>();
         }
@@ -27,7 +27,7 @@ namespace CodeTechnologiesMVC
         public Nullable<bool> IsAcademic { get; set; }
     
         public virtual ICollection<exam> exams { get; set; }
-        public virtual ICollection<code> codes { get; set; }
+        public virtual ICollection<examcode> examcodes { get; set; }
         public virtual ICollection<pricing> pricings { get; set; }
         public virtual ICollection<voucher> vouchers { get; set; }
     }

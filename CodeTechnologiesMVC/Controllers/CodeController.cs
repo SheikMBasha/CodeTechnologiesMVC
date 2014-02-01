@@ -15,7 +15,7 @@ namespace CodeTechnologiesMVC.Controllers
         {
             using (var db = new sadiqEntities2())
             {
-                List<code> codelist = db.codes.ToList();
+                List<examcode> codelist = db.examcodes.ToList();
                 return View(codelist);
             }
         }
@@ -26,11 +26,11 @@ namespace CodeTechnologiesMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(code codeObj)
+        public ActionResult Create(examcode codeObj)
         {
             using (var db = new sadiqEntities2())
             {
-                db.codes.Add(codeObj);
+                db.examcodes.Add(codeObj);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -40,7 +40,7 @@ namespace CodeTechnologiesMVC.Controllers
         {
             using (var db = new sadiqEntities2())
             {
-                var codeObj = db.codes.Find(id);
+                var codeObj = db.examcodes.Find(id);
                 return View(codeObj);
             }
         }
@@ -49,17 +49,17 @@ namespace CodeTechnologiesMVC.Controllers
         {
             using (var db = new sadiqEntities2())
             {
-                var codeObj = db.codes.Where(i => i.Id == id).SingleOrDefault();
+                var codeObj = db.examcodes.Where(i => i.Id == id).SingleOrDefault();
                 return View(codeObj);
             }
         }
 
         [HttpPost]
-        public ActionResult Edit(code codeObj)
+        public ActionResult Edit(examcode codeObj)
         {
             using (var db = new sadiqEntities2())
             {
-                var localCodeObj = db.codes.Where(i => i.Id == codeObj.Id).SingleOrDefault();
+                var localCodeObj = db.examcodes.Where(i => i.Id == codeObj.Id).SingleOrDefault();
                 db.Entry(localCodeObj).CurrentValues.SetValues(codeObj);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -70,8 +70,8 @@ namespace CodeTechnologiesMVC.Controllers
         {
             using (var db = new sadiqEntities2())
             {
-                var codeObj = db.codes.Where(i => i.Id == id).SingleOrDefault();
-                db.codes.Remove(codeObj);
+                var codeObj = db.examcodes.Where(i => i.Id == id).SingleOrDefault();
+                db.examcodes.Remove(codeObj);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

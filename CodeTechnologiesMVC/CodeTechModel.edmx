@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="sadiqModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="sadiqModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="sadiqModelStoreContainer">
           <EntitySet Name="academy" EntityType="sadiqModel.Store.academy" store:Type="Tables" Schema="sadiq" />
           <EntitySet Name="accounts" EntityType="sadiqModel.Store.accounts" store:Type="Tables" Schema="sadiq" />
@@ -29,8 +29,9 @@
       FROM `candidate` AS `candidate`</DefiningQuery>
           </EntitySet>
           <EntitySet Name="client" EntityType="sadiqModel.Store.client" store:Type="Tables" Schema="sadiq" />
-          <EntitySet Name="codes" EntityType="sadiqModel.Store.codes" store:Type="Tables" Schema="sadiq" />
+          <EntitySet Name="complimentaryvoucher" EntityType="sadiqModel.Store.complimentaryvoucher" store:Type="Tables" Schema="sadiq" />
           <EntitySet Name="confighiredprometric" EntityType="sadiqModel.Store.confighiredprometric" store:Type="Tables" Schema="sadiq" />
+          <EntitySet Name="examcodes" EntityType="sadiqModel.Store.examcodes" store:Type="Tables" Schema="sadiq" />
           <EntitySet Name="examnature" EntityType="sadiqModel.Store.examnature" store:Type="Tables" Schema="sadiq" />
           <EntitySet Name="exams" EntityType="sadiqModel.Store.exams" store:Type="Tables" Schema="sadiq" />
           <EntitySet Name="examstraining" EntityType="sadiqModel.Store.examstraining" store:Type="Tables" Schema="sadiq" />
@@ -69,7 +70,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_Codes_Client" Association="sadiqModel.Store.FK_Codes_Client">
             <End Role="client" EntitySet="client" />
-            <End Role="codes" EntitySet="codes" />
+            <End Role="examcodes" EntitySet="examcodes" />
           </AssociationSet>
           <AssociationSet Name="FK_ExamsTraining_Exams" Association="sadiqModel.Store.FK_ExamsTraining_Exams">
             <End Role="exams" EntitySet="exams" />
@@ -165,14 +166,18 @@
           <Property Name="Name" Type="varchar" Nullable="false" MaxLength="256" />
           <Property Name="IsAcademic" Type="bit" />
         </EntityType>
-        <EntityType Name="codes">
+        <EntityType Name="complimentaryvoucher">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="BatchId" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="BatchId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BatchNo" Type="varchar" MaxLength="255" />
+          <Property Name="Type" Type="varchar" MaxLength="127" />
+          <Property Name="Nature" Type="int" />
           <Property Name="ClientId" Type="varchar" MaxLength="31" />
-          <Property Name="ExamType" Type="varchar" MaxLength="45" />
-          <Property Name="ExamCode" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="ReceivedDate" Type="datetime" />
+          <Property Name="Expiry" Type="datetime" />
+          <Property Name="Price" Type="int" />
         </EntityType>
         <EntityType Name="confighiredprometric">
           <Key>
@@ -181,6 +186,15 @@
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="PrometricSiteId" Type="int" Nullable="false" />
           <Property Name="ProfitMargin" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="examcodes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ClientId" Type="varchar" MaxLength="31" />
+          <Property Name="ExamType" Type="varchar" MaxLength="45" />
+          <Property Name="ExamCode" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
         <EntityType Name="examnature">
           <Key>
@@ -391,12 +405,12 @@
         </Association>
         <Association Name="FK_Codes_Client">
           <End Role="client" Type="sadiqModel.Store.client" Multiplicity="0..1" />
-          <End Role="codes" Type="sadiqModel.Store.codes" Multiplicity="*" />
+          <End Role="examcodes" Type="sadiqModel.Store.examcodes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="client">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="codes">
+            <Dependent Role="examcodes">
               <PropertyRef Name="ClientId" />
             </Dependent>
           </ReferentialConstraint>
@@ -513,7 +527,8 @@
         <Function Name="GetAllExamCodes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sadiq" />
         <Function Name="GetAllVendors" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sadiq" />
         <Function Name="GetMailDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="sadiq" />
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="sadiqModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -522,8 +537,9 @@
           <EntitySet Name="accounts" EntityType="sadiqModel.account" />
           <EntitySet Name="candidates" EntityType="sadiqModel.candidate" />
           <EntitySet Name="clients" EntityType="sadiqModel.client" />
-          <EntitySet Name="codes" EntityType="sadiqModel.code" />
+          <EntitySet Name="complimentaryvouchers" EntityType="sadiqModel.complimentaryvoucher" />
           <EntitySet Name="confighiredprometrics" EntityType="sadiqModel.confighiredprometric" />
+          <EntitySet Name="examcodes" EntityType="sadiqModel.examcode" />
           <EntitySet Name="examnatures" EntityType="sadiqModel.examnature" />
           <EntitySet Name="exams" EntityType="sadiqModel.exam" />
           <EntitySet Name="examstrainings" EntityType="sadiqModel.examstraining" />
@@ -562,7 +578,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_Codes_Client" Association="sadiqModel.FK_Codes_Client">
             <End Role="client" EntitySet="clients" />
-            <End Role="codes" EntitySet="codes" />
+            <End Role="examcodes" EntitySet="examcodes" />
           </AssociationSet>
           <AssociationSet Name="FK_Pricing_Client" Association="sadiqModel.FK_Pricing_Client">
             <End Role="client" EntitySet="clients" />
@@ -600,7 +616,6 @@
             <End Role="prometric" EntitySet="prometrics" />
             <End Role="prometricpromotions" EntitySet="prometricpromotions" />
           </AssociationSet>
-          <FunctionImport Name="GetAllClients" />
           <FunctionImport Name="GetAllExamCodes" />
           <FunctionImport Name="GetAllVendors" />
           <FunctionImport Name="GetMailDetails" />
@@ -665,19 +680,22 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="256" Unicode="false" FixedLength="false" />
           <Property Name="IsAcademic" Type="Boolean" />
           <NavigationProperty Name="exams" Relationship="sadiqModel.FK_Client_Exams" FromRole="client" ToRole="exams" />
-          <NavigationProperty Name="codes" Relationship="sadiqModel.FK_Codes_Client" FromRole="client" ToRole="codes" />
+          <NavigationProperty Name="examcodes" Relationship="sadiqModel.FK_Codes_Client" FromRole="client" ToRole="examcodes" />
           <NavigationProperty Name="pricings" Relationship="sadiqModel.FK_Pricing_Client" FromRole="client" ToRole="pricing" />
           <NavigationProperty Name="vouchers" Relationship="sadiqModel.FK_Voucher_client" FromRole="client" ToRole="voucher" />
         </EntityType>
-        <EntityType Name="code">
+        <EntityType Name="complimentaryvoucher">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="BatchId" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="BatchId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="BatchNo" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Type" Type="String" MaxLength="127" Unicode="false" FixedLength="false" />
+          <Property Name="Nature" Type="Int32" />
           <Property Name="ClientId" Type="String" MaxLength="31" Unicode="false" FixedLength="false" />
-          <Property Name="ExamType" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
-          <Property Name="ExamCode" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="client" Relationship="sadiqModel.FK_Codes_Client" FromRole="codes" ToRole="client" />
+          <Property Name="ReceivedDate" Type="DateTime" />
+          <Property Name="Expiry" Type="DateTime" />
+          <Property Name="Price" Type="Int32" />
         </EntityType>
         <EntityType Name="confighiredprometric">
           <Key>
@@ -687,6 +705,16 @@
           <Property Name="PrometricSiteId" Type="Int32" Nullable="false" />
           <Property Name="ProfitMargin" Type="Int32" Nullable="false" />
           <NavigationProperty Name="prometric" Relationship="sadiqModel.FK_Prometric_ConfigPrometric" FromRole="confighiredprometric" ToRole="prometric" />
+        </EntityType>
+        <EntityType Name="examcode">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ClientId" Type="String" MaxLength="31" Unicode="false" FixedLength="false" />
+          <Property Name="ExamType" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="ExamCode1" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="client" Relationship="sadiqModel.FK_Codes_Client" FromRole="examcodes" ToRole="client" />
         </EntityType>
         <EntityType Name="examnature">
           <Key>
@@ -791,9 +819,9 @@
           <Property Name="POCEmail" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="SiteAddress" Type="String" Nullable="false" MaxLength="999" Unicode="false" FixedLength="false" />
           <Property Name="IsHired" Type="Boolean" />
+          <Property Name="PerExamProfit" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="confighiredprometrics" Relationship="sadiqModel.FK_Prometric_ConfigPrometric" FromRole="prometric" ToRole="confighiredprometric" />
           <NavigationProperty Name="prometricpromotions" Relationship="sadiqModel.FK_prometricpromotions_prometric" FromRole="prometric" ToRole="prometricpromotions" />
-          <Property Type="String" Name="PerExamProfit" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="prometricpromotion">
           <Key>
@@ -917,12 +945,12 @@
         </Association>
         <Association Name="FK_Codes_Client">
           <End Role="client" Type="sadiqModel.client" Multiplicity="0..1" />
-          <End Role="codes" Type="sadiqModel.code" Multiplicity="*" />
+          <End Role="examcodes" Type="sadiqModel.examcode" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="client">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="codes">
+            <Dependent Role="examcodes">
               <PropertyRef Name="ClientId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1098,13 +1126,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="codes">
-            <EntityTypeMapping TypeName="sadiqModel.code">
-              <MappingFragment StoreEntitySet="codes">
-                <ScalarProperty Name="Id" ColumnName="Id" />
+          <EntitySetMapping Name="complimentaryvouchers">
+            <EntityTypeMapping TypeName="sadiqModel.complimentaryvoucher">
+              <MappingFragment StoreEntitySet="complimentaryvoucher">
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Nature" ColumnName="Nature" />
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />
-                <ScalarProperty Name="ExamType" ColumnName="ExamType" />
-                <ScalarProperty Name="ExamCode" ColumnName="ExamCode" />
+                <ScalarProperty Name="ReceivedDate" ColumnName="ReceivedDate" />
+                <ScalarProperty Name="Expiry" ColumnName="Expiry" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1114,6 +1146,16 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="PrometricSiteId" ColumnName="PrometricSiteId" />
                 <ScalarProperty Name="ProfitMargin" ColumnName="ProfitMargin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="examcodes">
+            <EntityTypeMapping TypeName="sadiqModel.examcode">
+              <MappingFragment StoreEntitySet="examcodes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ExamType" ColumnName="ExamType" />
+                <ScalarProperty Name="ExamCode1" ColumnName="ExamCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1206,7 +1248,6 @@
           <EntitySetMapping Name="prometrics">
             <EntityTypeMapping TypeName="sadiqModel.prometric">
               <MappingFragment StoreEntitySet="prometric">
-                <ScalarProperty Name="PerExamProfit" ColumnName="PerExamProfit" />
                 <ScalarProperty Name="SiteId" ColumnName="SiteId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="POCName" ColumnName="POCName" />
@@ -1214,6 +1255,7 @@
                 <ScalarProperty Name="POCEmail" ColumnName="POCEmail" />
                 <ScalarProperty Name="SiteAddress" ColumnName="SiteAddress" />
                 <ScalarProperty Name="IsHired" ColumnName="IsHired" />
+                <ScalarProperty Name="PerExamProfit" ColumnName="PerExamProfit" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1264,7 +1306,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetAllClients" FunctionName="sadiqModel.Store.GetAllClients" />
           <FunctionImportMapping FunctionImportName="GetAllExamCodes" FunctionName="sadiqModel.Store.GetAllExamCodes" />
           <FunctionImportMapping FunctionImportName="GetAllVendors" FunctionName="sadiqModel.Store.GetAllVendors" />
           <FunctionImportMapping FunctionImportName="GetMailDetails" FunctionName="sadiqModel.Store.GetMailDetails" />

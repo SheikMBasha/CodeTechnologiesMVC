@@ -12,13 +12,15 @@ namespace CodeTechnologiesMVC
     using System;
     using System.Collections.Generic;
     
-    public partial class code
+    public partial class complimentaryvoucher
     {
-        public int Id { get; set; }
+        public int BatchId { get; set; }
+        public string BatchNo { get; set; }
+        public string Type { get; set; }
+        public Nullable<int> Nature { get; set; }
         public string ClientId { get; set; }
-        public string ExamType { get; set; }
-        public string ExamCode { get; set; }
-    
-        public virtual client client { get; set; }
+        public Nullable<System.DateTime> ReceivedDate { get; set; }
+        public Nullable<System.DateTime> Expiry { get; set; }
+        public Nullable<int> Price { get; set; }
     }
 }

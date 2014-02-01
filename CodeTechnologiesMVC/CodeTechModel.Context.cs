@@ -34,8 +34,9 @@ namespace CodeTechnologiesMVC
         public DbSet<account> accounts { get; set; }
         public DbSet<candidate> candidates { get; set; }
         public DbSet<client> clients { get; set; }
-        public DbSet<code> codes { get; set; }
+        public DbSet<complimentaryvoucher> complimentaryvouchers { get; set; }
         public DbSet<confighiredprometric> confighiredprometrics { get; set; }
+        public DbSet<examcode> examcodes { get; set; }
         public DbSet<examnature> examnatures { get; set; }
         public DbSet<exam> exams { get; set; }
         public DbSet<examstraining> examstrainings { get; set; }

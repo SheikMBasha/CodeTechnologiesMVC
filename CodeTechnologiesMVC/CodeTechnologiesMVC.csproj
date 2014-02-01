@@ -207,9 +207,6 @@
     <Compile Include="client.cs">
       <DependentUpon>CodeTechModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="code.cs">
-      <DependentUpon>CodeTechModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="CodeTechModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -224,6 +221,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CodeTechModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="complimentaryvoucher.cs">
+      <DependentUpon>CodeTechModel.tt</DependentUpon>
     </Compile>
     <Compile Include="confighiredprometric.cs">
       <DependentUpon>CodeTechModel.tt</DependentUpon>
@@ -240,6 +240,9 @@
     <Compile Include="Controllers\PrometricController.cs" />
     <Compile Include="Controllers\PromotionsController.cs" />
     <Compile Include="exam.cs">
+      <DependentUpon>CodeTechModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="examcode.cs">
       <DependentUpon>CodeTechModel.tt</DependentUpon>
     </Compile>
     <Compile Include="examnature.cs">
@@ -344,18 +347,18 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CodeTechModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="CodeTechModel.edmx.diagram">
+      <DependentUpon>CodeTechModel.edmx</DependentUpon>
+    </Content>
     <Content Include="CodeTechModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CodeTechModel.edmx</DependentUpon>
       <LastGenOutput>CodeTechModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="CodeTechModel.edmx.diagram">
       <DependentUpon>CodeTechModel.edmx</DependentUpon>
     </Content>
     <Content Include="CodeTechModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CodeTechModel.edmx</DependentUpon>
       <LastGenOutput>CodeTechModel.cs</LastGenOutput>
+      <DependentUpon>CodeTechModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />

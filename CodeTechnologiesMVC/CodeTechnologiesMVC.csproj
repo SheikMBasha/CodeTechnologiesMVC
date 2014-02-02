@@ -274,6 +274,7 @@
       <DependentUpon>CodeTechModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Classes\pricing.cs" />
     <Compile Include="Models\mail.cs" />
     <Compile Include="Models\MailAttribs.cs" />
     <Compile Include="Models\MailViewModel.cs" />

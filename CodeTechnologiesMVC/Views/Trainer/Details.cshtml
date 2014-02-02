@@ -1,0 +1,29 @@
+﻿@model CodeTechnologiesMVC.trainer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>trainer</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TrainerName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TrainerName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TrainerPhone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TrainerPhone)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.TrainerID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

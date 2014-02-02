@@ -1,0 +1,92 @@
+﻿@model CodeTechnologiesMVC.pricing
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>pricing</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.InstituteId, "institute")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("InstituteId", String.Empty)
+            @Html.ValidationMessageFor(model => model.InstituteId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ClientId, "client")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ClientId", String.Empty)
+            @Html.ValidationMessageFor(model => model.ClientId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VoucherType)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VoucherType)
+            @Html.ValidationMessageFor(model => model.VoucherType)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VoucherNature)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VoucherNature)
+            @Html.ValidationMessageFor(model => model.VoucherNature)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PriceWithVoucher)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PriceWithVoucher)
+            @Html.ValidationMessageFor(model => model.PriceWithVoucher)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PriceWithoutVoucher)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PriceWithoutVoucher)
+            @Html.ValidationMessageFor(model => model.PriceWithoutVoucher)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PriceDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PriceDate)
+            @Html.ValidationMessageFor(model => model.PriceDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PriceWithTraining)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PriceWithTraining)
+            @Html.ValidationMessageFor(model => model.PriceWithTraining)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

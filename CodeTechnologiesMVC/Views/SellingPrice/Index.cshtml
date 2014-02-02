@@ -1,0 +1,75 @@
+﻿@model IEnumerable<CodeTechnologiesMVC.pricing>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.institute.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.client.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VoucherType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VoucherNature)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PriceWithVoucher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PriceWithoutVoucher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PriceDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PriceWithTraining)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.institute.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.client.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VoucherType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VoucherNature)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriceWithVoucher)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriceWithoutVoucher)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriceDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriceWithTraining)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

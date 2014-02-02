@@ -242,6 +242,7 @@
     <Compile Include="Controllers\MailController.cs" />
     <Compile Include="Controllers\PrometricController.cs" />
     <Compile Include="Controllers\PromotionsController.cs" />
+    <Compile Include="Controllers\SellingPriceController.cs" />
     <Compile Include="Controllers\TrainerController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="exam.cs">
@@ -496,6 +497,11 @@
     <Content Include="Views\Trainer\Edit.cshtml" />
     <Content Include="Views\Trainer\Details.cshtml" />
     <Content Include="Views\Trainer\Delete.cshtml" />
+    <Content Include="Views\SellingPrice\Index.cshtml" />
+    <Content Include="Views\SellingPrice\Details.cshtml" />
+    <Content Include="Views\SellingPrice\Create.cshtml" />
+    <Content Include="Views\SellingPrice\Edit.cshtml" />
+    <Content Include="Views\SellingPrice\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\ExcelFiles\" />

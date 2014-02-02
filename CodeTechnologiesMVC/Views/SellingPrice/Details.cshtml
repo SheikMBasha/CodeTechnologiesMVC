@@ -1,0 +1,71 @@
+﻿@model CodeTechnologiesMVC.pricing
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>pricing</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.institute.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.institute.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.client.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.client.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VoucherType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VoucherType)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VoucherNature)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VoucherNature)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PriceWithVoucher)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PriceWithVoucher)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PriceWithoutVoucher)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PriceWithoutVoucher)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PriceDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PriceDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PriceWithTraining)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PriceWithTraining)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

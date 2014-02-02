@@ -242,6 +242,7 @@
     <Compile Include="Controllers\MailController.cs" />
     <Compile Include="Controllers\PrometricController.cs" />
     <Compile Include="Controllers\PromotionsController.cs" />
+    <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="exam.cs">
       <DependentUpon>CodeTechModel.tt</DependentUpon>
     </Compile>
@@ -484,6 +485,11 @@
     <Content Include="Views\Mail\Index.cshtml" />
     <Content Include="Views\Mail\ImportMailExcelFileToDB.cshtml" />
     <Content Include="Views\Mail\Create.cshtml" />
+    <Content Include="Views\Vendor\Index.cshtml" />
+    <Content Include="Views\Vendor\Create.cshtml" />
+    <Content Include="Views\Vendor\Details.cshtml" />
+    <Content Include="Views\Vendor\Edit.cshtml" />
+    <Content Include="Views\Vendor\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\ExcelFiles\" />
